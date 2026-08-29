@@ -7,13 +7,18 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  /** Setzt den Titel wörtlich, ohne den Namen dahinter. */
+  standaloneTitle?: boolean;
   /** Legt den Kopf über die erste Sektion: durchsichtig, bis gescrollt wird.
       Nur für Seiten, die oben dunkel anfangen — auf hellem Grund wäre die
       cremefarbene Navigation unsichtbar. */
   overHero?: boolean;
 }
 
-const { title, description, overHero = false } = Astro.props;
+const { title, description, overHero = false, standaloneTitle = false } = Astro.props;
+
+// Auf der Startseite wäre "Wok & Sushi — Hoi An Wok & Sushi" zweimal dasselbe.
+const seitentitel = standaloneTitle ? title : `${title} — ${site.name}`;
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site ?? site.url).href;
 
@@ -63,11 +68,11 @@ const schema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} — {site.name}</title>
+    <title>{seitentitel}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} — ${site.name}`} />
+    <meta property="og:title" content={seitentitel} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="de_DE" />
     <meta name="theme-color" content="#120e0b" />
@@ -113,7 +118,7 @@ const schema = {
         class="mx-auto flex min-h-17 w-full max-w-shell items-center justify-between gap-4 px-gutter"
       >
         <a
-          class="font-display text-[1.15rem] font-semibold tracking-[0.02em] whitespace-nowrap text-red-600 no-underline"
+          class="font-display text-[1.15rem] font-semibold tracking-[0.02em] whitespace-nowrap text-lacquer no-underline"
           href="/">Hoi An <span class="text-white">Wok &amp; Sushi</span></a
         >
         <Nav client:load pathname={pathname} />

@@ -27,7 +27,6 @@
   /* Tag: Reispapier und Ockerputz */
   --color-paper: #fbf4e2;
   --color-paper-deep: #f4e9cf;
-  --color-wall: #e7c583;
 
   /* Akzente */
   /* Das Rot der gedruckten Karte. Etwas dunkler als dort abgegriffen, damit
@@ -36,7 +35,6 @@
   --color-lacquer-deep: #b3141c;
   --color-lantern: #e24b2c;
   --color-lantern-soft: #f08a5c;
-  --color-shutter: #3e8c7c;
 
   /* Schrift auf hellem bzw. dunklem Grund */
   --color-night: #241c15;

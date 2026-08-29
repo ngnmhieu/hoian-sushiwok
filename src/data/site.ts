@@ -30,4 +30,4 @@ export const hours: Hours[] = [
 
 // Wird auf der Speisekarte und im Footer als Hinweis angezeigt,
 // solange die echten Inhalte fehlen. Auf `false` setzen, wenn alles steht.
-export const isDraft = true;
+export const isDraft = false;
