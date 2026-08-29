@@ -9,6 +9,12 @@
 
 @plugin '@tailwindcss/typography';
 
+/* Markdown ist keine Quelle für Klassennamen. Ohne diese Zeilen baut Tailwind
+   Utilities aus Fließtext — README und CLAUDE.md reden über Klassen, benutzen
+   sie aber nicht. */
+@source not '../../*.md';
+@source not '../../documentation';
+
 /* ══════════════════════════════════════════════════════════════════════════
    Designsystem als Tailwind-Theme.
    Farben aus der Altstadt von Hội An: Ockerputz, verwitterte Fensterläden,
