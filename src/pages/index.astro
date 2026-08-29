@@ -7,6 +7,21 @@ import { contact } from '../data/site';
 import hero from '../assets/hoian-1.jpg';
 import restaurant1 from '../assets/restaurant-1.jpeg';
 import restaurant2 from '../assets/restaurant-2.jpeg';
+import nigiri from '../assets/nigiri-chopstick-2.png';
+import wok from '../assets/wok-1.jpg';
+import sushi1 from '../assets/sushi-plate-1.jpg';
+import sushi2 from '../assets/sushi-plate-2.jpg';
+import sushi3 from '../assets/sushi-plate-3.jpg';
+import sushi4 from '../assets/sushi-plate-4.jpg';
+
+// Vier Aufnahmen als Quadrate. Den Zuschnitt macht object-cover im quadratischen
+// Rahmen; der Rahmen schneidet auch die Vergrößerung beim Hovern ab.
+const plates = [
+  { src: sushi1, alt: 'Inside-Out-Rolle mit Lachs und Soße auf Schieferplatte' },
+  { src: sushi2, alt: 'Nigiri mit Lachs, eines davon zwischen Stäbchen' },
+  { src: sushi3, alt: 'Maki mit Lachs, dazu Wasabi und eingelegter Ingwer' },
+  { src: sushi4, alt: 'Zwei Lachs-Nigiri auf einem weißen Teller' },
+];
 
 // Zwei Aufnahmen aus dem Gastraum. Beide sind hochkant, deshalb derselbe
 // Zuschnitt für beide — sonst stünden zwei verschiedene Höhen nebeneinander.
@@ -76,7 +91,7 @@ const darkLink =
       <!-- Die Überschrift stand in einer halben Rasterspalte und brach dort um,
            obwohl der Abschnitt breit genug ist. Sie läuft jetzt über die ganze
            Breite, der Absatz darunter bleibt bei 62 Zeichen. -->
-      <h2 class="text-center font-display text-heading leading-none tracking-[-0.015em] text-balance">
+      <h2 class="text-left font-display text-heading leading-none tracking-[-0.015em] text-balance">
         Ein Stück Hoi An in Löbau
       </h2>
       <p class="mt-6 text-lead leading-[1.55] text-pretty">
@@ -109,12 +124,84 @@ const darkLink =
     </div>
   </section>
 
+  <section class="bg-ink-900 py-[clamp(2rem,4.5vw,4rem)] text-cream">
+    <div
+      class="mx-auto grid w-full max-w-shell items-center gap-[clamp(1.5rem,4vw,3rem)] px-gutter md:grid-cols-2"
+    >
+      <Image
+        src={wok}
+        alt="Flambierender Wok über offener Flamme in der Küche"
+        width={1200}
+        height={1500}
+        widths={[480, 760, 1200]}
+        sizes="(min-width: 48rem) 50vw, 100vw"
+        class="aspect-4/5 w-full object-cover"
+      />
+      <div>
+        <h2
+          class="pb-6 text-left font-display text-heading leading-none tracking-[-0.015em] text-balance"
+        >
+          Wok
+        </h2>
+        <p class="text-lead leading-[1.55] text-pretty">
+          Aus dem Wok kommen Bratnudeln, Bratreis und Gebratenes mit Gemüse, dazu Huhn, Ente, Rind,
+          Garnelen oder Tofu. Bei voller Hitze ist ein Gericht in wenigen Minuten fertig und steht
+          heiß auf dem Tisch. Die Soße wählen Sie dazu: süß-sauer, pikant, Curry oder Erdnuss.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-paper py-[clamp(2rem,4.5vw,4rem)] max-sm:pt-20">
+    <!-- Freigestelltes Nigiri als Schmuck in der oberen rechten Ecke. Es ragt
+         ein Stück über den Rand hinaus, deshalb overflow-hidden am Abschnitt.
+         Der Absatz bekommt rechts Platz, damit keine Zeile darunter läuft. -->
+    <Image
+      src={nigiri}
+      alt=""
+      width={680}
+      height={485}
+      widths={[340, 680]}
+      sizes="(min-width: 48rem) 20vw, 40vw"
+      class="pointer-events-none absolute top-0 right-[clamp(1rem,3vw,2.5rem)] w-[clamp(10rem,28vw,24rem)] -translate-y-[10%] select-none"
+    />
+    <div class="relative mx-auto w-full max-w-shell px-gutter">
+      <h2
+        class="pb-6 text-left font-display text-heading leading-none tracking-[-0.015em] text-balance"
+      >
+        Sushi
+      </h2>
+      <p class="text-lead leading-[1.55] text-pretty sm:pr-[clamp(11rem,30vw,25rem)]">
+        An der Theke wird roher Fisch geschnitten und der Reis von Hand geformt. Was dort entsteht,
+        braucht keinen Herd: kalt angerichtet, frisch gerollt und erst dann zusammengestellt, wenn
+        die Bestellung da ist. Dazu kalte Vorspeisen.
+      </p>
+
+      <ul class="mt-10 grid grid-cols-2 gap-[clamp(0.75rem,2vw,1.5rem)] sm:grid-cols-4">
+        {
+          plates.map((plate) => (
+            <li class="aspect-square overflow-hidden">
+              <Image
+                src={plate.src}
+                alt={plate.alt}
+                width={640}
+                widths={[320, 480, 640]}
+                sizes="(min-width: 40rem) 25vw, 50vw"
+                class="h-full w-full object-cover transition-transform duration-300 hover:scale-110 motion-reduce:transition-none motion-reduce:hover:scale-100"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
   <!-- Der Kontakt hat keine eigene Seite mehr, er ist dieser Abschnitt. Das
        Kopfmenü springt mit /#kontakt hierher; scroll-mt hält die Überschrift
        unter der klebenden Kopfzeile frei. -->
   <section id="kontakt" class="scroll-mt-17 bg-ink-900 py-[clamp(2rem,4.5vw,4rem)] text-cream">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <h2 class="text-center font-display text-heading leading-none tracking-[-0.015em] text-balance pb-6">
+      <h2 class="text-left font-display text-heading leading-none tracking-[-0.015em] text-balance pb-6">
         Kontakt
       </h2>
       <div class="mt-8 grid gap-[clamp(1.5rem,4vw,3rem)] md:grid-cols-2">
