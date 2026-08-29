@@ -7,6 +7,7 @@ Address: Bahnhofstraße 9, 02708 Löbau
 Opening hours: Monday to Saturday, 10 AM - 20 PM
 Landline: 03585 4525047
 Mobile: 0176 31510183
+Email: info@hoian-sushiwok.de
 
 ## Reservation
 Reservation is only possible by phone right now.

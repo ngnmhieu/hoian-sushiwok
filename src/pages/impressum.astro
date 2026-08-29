@@ -20,13 +20,14 @@ import { contact, site } from '../data/site';
 
       <h2>Angaben gemäß § 5 DDG</h2>
       <p>
-        TODO: Name des Betriebs bzw. der Gesellschaft<br />
+        {site.name}<br />
+        Inhaber: {contact.owner}<br />
         {contact.street}<br />
         {contact.postalCode} {contact.city}
       </p>
 
       <h2>Vertreten durch</h2>
-      <p>TODO: Vor- und Nachname der inhabenden oder vertretungsberechtigten Person</p>
+      <p>{contact.owner}</p>
 
       <h2>Kontakt</h2>
       <p>

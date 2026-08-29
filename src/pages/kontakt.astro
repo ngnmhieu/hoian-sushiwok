@@ -27,6 +27,7 @@ import { contact } from '../data/site';
           <h2 class="mt-10 font-display wonk text-title leading-none text-balance">Telefon &amp; E-Mail</h2>
           <p class="mt-4">
             <a class="underline decoration-night/30 underline-offset-4 hover:decoration-lantern" href={contact.phoneHref}>{contact.phone}</a><br />
+            <a class="underline decoration-night/30 underline-offset-4 hover:decoration-lantern" href={contact.mobileHref}>{contact.mobile}</a> <span class="text-night-dim">(mobil)</span><br />
             <a class="underline decoration-night/30 underline-offset-4 hover:decoration-lantern" href={`mailto:${contact.email}`}>{contact.email}</a>
           </p>
           <p class="mt-8 flex flex-wrap gap-3">

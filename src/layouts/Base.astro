@@ -13,9 +13,11 @@ const { title, description } = Astro.props;
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site ?? site.url).href;
 
-// Suchmaschinen lesen das als Tatsache. Adresse und Zeiten erst mitgeben,
-// wenn sie echt sind — TODO-Text wäre schlimmer als gar keine Angabe.
-// Beim Ausfüllen: `openingHours` braucht die Form "Mo-Fr 11:30-14:30".
+// Suchmaschinen lesen das als Tatsache. Adresse, Zeiten und Telefon sind echt,
+// hängen aber weiter an `isDraft` — der Haken sind jetzt die ungeprüften
+// Rechtstexte und die fehlende Speisekarte, nicht mehr fehlende Angaben.
+// `openingHours` braucht die Form "Mo-Fr 11:30-14:30" — dafür steht `schema`
+// an den Zeiten, die Anzeige in `Hours.astro` bleibt davon unberührt.
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Restaurant',
@@ -26,7 +28,7 @@ const schema = {
   ...(isDraft
     ? {}
     : {
-        telephone: contact.phone,
+        telephone: contact.phoneHref.replace('tel:', ''),
         address: {
           '@type': 'PostalAddress',
           streetAddress: contact.street,
@@ -34,7 +36,7 @@ const schema = {
           addressLocality: contact.city,
           addressCountry: 'DE',
         },
-        openingHours: hours.map((h) => `${h.days} ${h.open}`),
+        openingHours: hours.flatMap((h) => h.schema ?? []),
       }),
 };
 ---

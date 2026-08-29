@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// TODO: Alle Werte mit «TODO» durch die echten Angaben ersetzen.
-// Diese Datei ist die einzige Stelle, an der Adresse, Zeiten und Kontakt stehen.
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const site = {
   name: 'Hội An Sushi & Wok',
   shortName: 'Hội An',
@@ -11,24 +6,26 @@ export const site = {
 };
 
 export const contact = {
-  street: 'TODO: Straße und Hausnummer',
-  postalCode: 'TODO: PLZ',
-  city: 'TODO: Ort',
-  phone: 'TODO: +49 ...',
-  // Für tel:-Links, ohne Leerzeichen. TODO ersetzen.
-  phoneHref: 'tel:+49000000000',
-  email: 'TODO: mail@hoian-sushiwok.de',
+  street: 'Bahnhofstraße 9',
+  postalCode: '02708',
+  city: 'Löbau',
+  owner: 'Viet Toan Do',
+  phone: '03585 4525047',
+  // Für tel:-Links: ohne Leerzeichen, mit Ländervorwahl statt führender Null.
+  phoneHref: 'tel:+4935854525047',
+  mobile: '0176 31510183',
+  mobileHref: 'tel:+4917631510183',
+  email: 'info@hoian-sushiwok.de',
   mapsUrl: '', // TODO: Google-Maps-Link einfügen, sonst wird der Button ausgeblendet.
 };
 
-export type Hours = { days: string; open: string; note?: string };
+// `schema` ist die maschinenlesbare Form für schema.org (`Mo-Sa 10:00-20:00`,
+// ASCII-Bindestriche, zweistellige Tageskürzel). Ruhetage lassen sie weg.
+export type Hours = { days: string; open: string; schema?: string; note?: string };
 
-// TODO: echte Öffnungszeiten eintragen.
 export const hours: Hours[] = [
-  { days: 'Montag', open: 'Ruhetag' },
-  { days: 'Dienstag – Freitag', open: '11:30 – 14:30 · 17:30 – 22:00' },
-  { days: 'Samstag', open: '17:30 – 22:30' },
-  { days: 'Sonntag & Feiertage', open: '12:00 – 21:30' },
+  { days: 'Montag – Samstag', open: '10:00 – 20:00', schema: 'Mo-Sa 10:00-20:00' },
+  { days: 'Sonntag', open: 'Ruhetag' },
 ];
 
 // Wird auf der Speisekarte und im Footer als Hinweis angezeigt,

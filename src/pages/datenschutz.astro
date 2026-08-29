@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import Prose from '../components/Prose.astro';
-import { contact } from '../data/site';
+import { contact, site } from '../data/site';
 ---
 
 <Base
@@ -23,7 +23,7 @@ import { contact } from '../data/site';
 
       <h2>Verantwortliche Stelle</h2>
       <p>
-        TODO: Name des Betriebs<br />
+        {site.name}, Inhaber: {contact.owner}<br />
         {contact.street}, {contact.postalCode} {contact.city}<br />
         Telefon: {contact.phone} · E-Mail: {contact.email}
       </p>
