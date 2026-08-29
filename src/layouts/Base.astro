@@ -7,11 +7,28 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  /** Legt den Kopf über die erste Sektion: durchsichtig, bis gescrollt wird.
+      Nur für Seiten, die oben dunkel anfangen — auf hellem Grund wäre die
+      cremefarbene Navigation unsichtbar. */
+  overHero?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, overHero = false } = Astro.props;
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site ?? site.url).href;
+
+// Ein Pixel am Seitenanfang: verlässt es das Bild, ist gescrollt. Billiger als
+// ein Scroll-Listener, der bei jedem Rad-Tick läuft.
+const kopfSkript = `
+  const kopf = document.querySelector('[data-header]');
+  const marke = document.querySelector('[data-header-sentinel]');
+  if (kopf && marke) {
+    new IntersectionObserver(
+      ([eintrag]) => kopf.toggleAttribute('data-scrolled', !eintrag.isIntersecting),
+      { threshold: 1 },
+    ).observe(marke);
+  }
+`;
 
 // Suchmaschinen lesen das als Tatsache. Adresse, Zeiten und Telefon sind echt,
 // hängen aber weiter an `isDraft` — der Haken sind jetzt die ungeprüften
@@ -58,6 +75,14 @@ const schema = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     <noscript>
       <style>
+        /* Ohne JavaScript feuert der Beobachter nie. Dann bleibt der Kopf
+           dauerhaft hinterlegt — durchsichtig über hellem Inhalt wäre die
+           Schrift weg. */
+        [data-header] {
+          background-color: var(--color-ink-900);
+          border-bottom-color: color-mix(in srgb, var(--color-cream) 15%, transparent);
+        }
+
         /* Ohne JavaScript bleibt die Navigation aufgeklappt statt unerreichbar. */
         @media (max-width: 48rem) {
           [data-nav] {
@@ -75,8 +100,14 @@ const schema = {
       class="absolute top-0 left-2 z-100 -translate-y-24 rounded-full bg-paper px-4 py-2.5 text-night no-underline transition-transform focus:translate-y-2"
       href="#inhalt">Zum Inhalt springen</a
     >
+    {overHero && <div data-header-sentinel aria-hidden="true" class="absolute top-0 h-px w-full" />}
     <header
-      class="sticky top-0 z-50 border-b border-cream/15 bg-ink-900/90 text-cream backdrop-blur-md"
+      data-header
+      class={
+        overHero
+          ? 'fixed inset-x-0 top-0 z-50 border-b border-transparent text-cream transition-colors duration-300 data-scrolled:border-cream/15 data-scrolled:bg-ink-900/90 data-scrolled:backdrop-blur-md'
+          : 'sticky top-0 z-50 border-b border-cream/15 bg-ink-900/90 text-cream backdrop-blur-md'
+      }
     >
       <div
         class="mx-auto flex min-h-17 w-full max-w-shell items-center justify-between gap-4 px-gutter"
@@ -92,5 +123,6 @@ const schema = {
       <slot />
     </main>
     <Footer />
+    {overHero && <script is:inline set:html={kopfSkript} />}
   </body>
 </html>

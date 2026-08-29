@@ -3,8 +3,14 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
 import Hours from '../components/Hours.astro';
-import { contact, isDraft } from '../data/site';
+import { contact } from '../data/site';
 import hero from '../assets/hoian-1.jpg';
+import restaurant1 from '../assets/restaurant-1.jpeg';
+import restaurant2 from '../assets/restaurant-2.jpeg';
+
+// Zwei Aufnahmen aus dem Gastraum. Beide sind hochkant, deshalb derselbe
+// Zuschnitt für beide — sonst stünden zwei verschiedene Höhen nebeneinander.
+const shot = 'aspect-4/5 w-full object-cover';
 
 const rise = 'opacity-0 animate-rise motion-reduce:animate-none motion-reduce:opacity-100';
 const mapsQuery = encodeURIComponent(
@@ -13,15 +19,15 @@ const mapsQuery = encodeURIComponent(
 const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&z=16&hl=de&output=embed`;
 const darkLink =
   'underline decoration-cream/30 underline-offset-4 hover:decoration-lantern-soft';
-const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5rem)] border-t-[3px]';
 ---
 
 <Base
+  overHero
   title="Wok & Sushi"
   description="Sushi und warme Gerichte — asiatisch essen mitten in Löbau"
 >
   <section
-    class="relative overflow-hidden bg-[radial-gradient(120%_90%_at_50%_-10%,var(--color-ink-700),var(--color-ink-900)_62%)] pt-[clamp(7rem,18vh,12rem)] pb-[clamp(4rem,10vh,7rem)] text-cream"
+    class="relative overflow-hidden bg-[radial-gradient(120%_90%_at_50%_-10%,var(--color-ink-700),var(--color-ink-900)_62%)] pt-[calc(4.25rem+clamp(3rem,8vh,5rem))] pb-[clamp(4rem,10vh,7rem)] text-cream"
   >
     <!-- Die Laternen von Hoi An als Foto statt als CSS-Nachbau. Der Verlauf
          darüber hält die hellen Laternen von der Schrift fern. -->
@@ -42,12 +48,12 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
     </div>
     <div class="relative z-20 mx-auto w-full max-w-shell px-gutter text-center">
       <h1
-        class={`font-display text-display leading-none tracking-[-0.03em] text-balance ${rise}`}
+        class={`font-display text-display leading-none tracking-[-0.03em] text-balance text-red-600 ${rise}`}
         style="animation-delay:.15s"
       >
         Hoi An
         <em
-          class="mt-4 block text-[0.42em] font-normal tracking-[0.32em] text-wall uppercase not-italic"
+          class="mt-4 block text-[0.42em] font-normal tracking-[0.32em] text-white uppercase not-italic"
           >Wok &amp; Sushi</em
         >
       </h1>
@@ -64,61 +70,43 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
     </div>
   </section>
 
-  <section class="py-band">
+  <section class="bg-paper py-band">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <h2 class="max-w-[18ch] font-display text-heading leading-none tracking-[-0.015em] text-balance">
-        Zwei Küchen, ein Haus
-      </h2>
-      <p class="mt-6 mb-12 max-w-[62ch] text-lead leading-[1.55] text-pretty">
-        Sushi und Wok brauchen das Gegenteil voneinander: die eine Hälfte kühlt, die andere heizt.
-        Deshalb ist auch die Karte in zwei Hälften geteilt. Sie können in einer bleiben oder
-        mischen.
-      </p>
-
-      <div class="grid gap-[clamp(1.5rem,4vw,3rem)] md:grid-cols-2">
-        <div class={`${card} border-t-shutter`}>
-          <h3 class="mb-3 font-display text-title leading-none text-balance">Sushi</h3>
-          <p class="max-w-[46ch]">
-            Roher Fisch, geformter Reis, kalte Vorspeisen. Wird an der Theke gemacht, nicht am Herd.
-          </p>
+      <div class="grid gap-[clamp(2rem,5vw,4.5rem)] md:grid-cols-2">
+        <div>
+          <h2 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">
+            Ein Stück Hoi An in Löbau
+          </h2>
         </div>
-        <div class={`${card} border-t-lantern`}>
-          <h3 class="mb-3 font-display text-title leading-none text-balance">Warme Gerichte</h3>
-          <p class="max-w-[46ch]">
-            Wok bei voller Hitze, Brühen über Stunden. Alles kommt heiß und in wenigen Minuten.
+        <div>
+          <p class="max-w-[62ch] text-lead leading-[1.55] text-pretty">
+            Hoi An ist eine Hafenstadt in Zentralvietnam: Laternen über der Altstadt, offene
+            Küchen in den Gassen. Die Stadt lässt sich nicht mitbringen, ihre Küche schon — dieselben
+            Gewürze, derselbe Reis, dieselben langen Abende, an denen das Essen in die Mitte des
+            Tisches kommt und alle zugreifen. Genau das steht hier an der Bahnhofstraße.
           </p>
         </div>
       </div>
 
-      <p class="mt-10">
-        <Button href="/speisekarte/" variant="outline">Ganze Karte öffnen</Button>
-      </p>
-    </div>
-  </section>
-
-  <section class="bg-wall py-band">
-    <div class="mx-auto grid w-full max-w-shell gap-[clamp(2rem,5vw,4.5rem)] px-gutter md:grid-cols-2">
-      <div>
-        <h2 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">
-          Ein Stück Hoi An in Löbau
-        </h2>
-      </div>
-      <div>
-        <p class="max-w-[62ch] text-lead leading-[1.55] text-pretty">
-          Hoi An ist eine Hafenstadt in Zentralvietnam: Laternen über der Altstadt, offene
-          Küchen in den Gassen. Die Stadt lässt sich nicht mitbringen, ihre Küche schon — dieselben
-          Gewürze, derselbe Reis, dieselben langen Abende, an denen das Essen in die Mitte des
-          Tisches kommt und alle zugreifen. Genau das steht hier an der Bahnhofstraße.
-        </p>
-        {
-          isDraft && (
-            <p class="mt-4 max-w-[62ch]">
-              <strong class="font-semibold">TODO:</strong> Hier ein bis zwei Absätze über das Haus
-              einsetzen — wer kocht, seit wann es das Restaurant gibt, was Ihnen beim Einkauf wichtig
-              ist.
-            </p>
-          )
-        }
+      <div class="mt-[clamp(2rem,5vw,3.5rem)] grid gap-[clamp(0.75rem,2vw,1.5rem)] sm:grid-cols-2">
+        <Image
+          src={restaurant1}
+          alt="Gastraum mit geschwungener Holzskulptur über der Theke"
+          width={1200}
+          height={1600}
+          widths={[480, 760, 1200]}
+          sizes="(min-width: 40rem) 50vw, 100vw"
+          class={shot}
+        />
+        <Image
+          src={restaurant2}
+          alt="Wandbild mit dem Schriftzug des Restaurants über den Sitzplätzen"
+          width={1200}
+          height={1600}
+          widths={[480, 760, 1200]}
+          sizes="(min-width: 40rem) 50vw, 100vw"
+          class={shot}
+        />
       </div>
     </div>
   </section>

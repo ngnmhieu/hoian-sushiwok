@@ -57,7 +57,7 @@ export default function Nav({ pathname }: { pathname: string }) {
             href={link.href}
             aria-current={current === norm(link.href) ? 'page' : undefined}
             onClick={() => setOpen(false)}
-            className="border-b border-transparent py-1.5 text-label tracking-[0.06em] text-cream-dim no-underline transition-colors hover:text-cream aria-[current=page]:border-lantern aria-[current=page]:text-cream max-md:border-b-cream/15 max-md:py-3.5 max-md:aria-[current=page]:border-b-lantern"
+            className="border-b border-transparent py-1.5 text-label font-medium tracking-[0.06em] text-white no-underline transition-colors hover:text-white/70 aria-[current=page]:border-lacquer max-md:border-b-cream/15 max-md:py-3.5 max-md:aria-[current=page]:border-b-lacquer"
           >
             {link.label}
           </a>
