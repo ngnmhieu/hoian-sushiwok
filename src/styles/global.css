@@ -1,10 +1,6 @@
 /* Selbst gehostete Schriften — keine Anfrage an Google, das erspart der
    Datenschutzerklärung einen Absatz und dem Besucher einen Roundtrip. */
-@import '@fontsource-variable/fraunces/full.css';
-@import '@fontsource/be-vietnam-pro/300.css';
-@import '@fontsource/be-vietnam-pro/400.css';
-@import '@fontsource/be-vietnam-pro/500.css';
-@import '@fontsource/be-vietnam-pro/600.css';
+@import '@fontsource-variable/nunito';
 @import 'tailwindcss';
 
 @plugin '@tailwindcss/typography';
@@ -34,6 +30,10 @@
   --color-wall: #e7c583;
 
   /* Akzente */
+  /* Das Rot der gedruckten Karte. Etwas dunkler als dort abgegriffen, damit
+     weiße Schrift darauf 4,9:1 erreicht — der Druckton kam nur auf 4,4:1. */
+  --color-lacquer: #dc1f24;
+  --color-lacquer-deep: #b3141c;
   --color-lantern: #e24b2c;
   --color-lantern-soft: #f08a5c;
   --color-shutter: #3e8c7c;
@@ -44,8 +44,10 @@
   --color-cream: #f3ece0;
   --color-cream-dim: #b6b0a3;
 
-  --font-display: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
-  --font-sans: 'Be Vietnam Pro', 'Helvetica Neue', Arial, sans-serif;
+  /* Eine Schrift für alles. Nunito ist variabel von 200 bis 1000, die
+     Gewichte kommen also ohne zusätzliche Dateien. */
+  --font-display: 'Nunito Variable', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Nunito Variable', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
 
   /* Fließende Typoskala — von der Bildunterschrift bis zum Kopf der Startseite */
   --text-label: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
@@ -100,18 +102,6 @@
       transform: translateY(0);
     }
   }
-}
-
-/* Fraunces hat zwei Achsen, die den Charakter machen: SOFT rundet die Enden,
-   WONK kippt einzelne Buchstaben aus der Reihe. */
-@utility wonk {
-  font-variation-settings: 'SOFT' 28, 'WONK' 1;
-}
-@utility wonk-soft {
-  font-variation-settings: 'SOFT' 60, 'WONK' 1;
-}
-@utility wonk-none {
-  font-variation-settings: 'SOFT' 0, 'WONK' 0;
 }
 
 /* Das Papier der Laterne: heller Kern, satter Rand, zwei Höfe Licht.

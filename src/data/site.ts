@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Hoi An Sushi & Wok',
+  name: 'Hoi An Wok & Sushi',
   shortName: 'Hoi An',
   tagline: 'Sushi, Wok und vietnamesische Küche mitten in Löbau',
   url: 'https://hoian-sushiwok.de',

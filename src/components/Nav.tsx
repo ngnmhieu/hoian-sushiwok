@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const links = [
   { href: '/', label: 'Start' },
   { href: '/speisekarte/', label: 'Speisekarte' },
-  { href: '/kontakt/', label: 'Kontakt' },
+  { href: '/#kontakt', label: 'Kontakt' },
 ];
 
 /** Kopfnavigation. Unter der md-Grenze klappt sie auf Knopfdruck auf. */
@@ -25,12 +25,25 @@ export default function Nav({ pathname }: { pathname: string }) {
       <button
         type="button"
         data-nav-toggle
-        className="cursor-pointer rounded-full border border-cream/15 px-4 py-2 text-label tracking-[0.08em] uppercase md:hidden"
+        className="grid size-11 cursor-pointer place-items-center text-cream-dim transition-colors hover:text-cream md:hidden"
         aria-expanded={open}
         aria-controls="hauptnavigation"
+        aria-label={open ? 'Menü schließen' : 'Menü öffnen'}
         onClick={() => setOpen((v) => !v)}
       >
-        {open ? 'Schließen' : 'Menü'}
+        {/* Drei Striche, die zum Kreuz werden: der mittlere blendet aus, die
+            äußeren wandern in die Mitte und drehen sich. */}
+        <span aria-hidden="true" className="relative block h-3.5 w-5">
+          <span
+            className={`absolute inset-x-0 top-0 h-px bg-current transition-transform duration-200 motion-reduce:transition-none ${open ? 'translate-y-[6.5px] rotate-45' : ''}`}
+          />
+          <span
+            className={`absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current transition-opacity duration-200 motion-reduce:transition-none ${open ? 'opacity-0' : ''}`}
+          />
+          <span
+            className={`absolute inset-x-0 bottom-0 h-px bg-current transition-transform duration-200 motion-reduce:transition-none ${open ? '-translate-y-[6.5px] -rotate-45' : ''}`}
+          />
+        </span>
       </button>
       <nav
         id="hauptnavigation"

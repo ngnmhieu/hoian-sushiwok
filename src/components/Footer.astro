@@ -1,45 +1,17 @@
 ---
-import Hours from './Hours.astro';
-import { contact, site } from '../data/site';
+import { site } from '../data/site';
 
 const link = 'border-b border-cream/15 no-underline transition-colors hover:border-lantern hover:text-cream';
 ---
 
-<footer class="bg-ink-900 pt-[clamp(3rem,7vw,5rem)] pb-8 text-label text-cream-dim">
-  <div class="mx-auto w-full max-w-shell px-gutter">
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-      <div>
-        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">{site.name}</h2>
-        <p>{site.tagline}</p>
-      </div>
-      <div>
-        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Adresse</h2>
-        <p>
-          {contact.street}<br />
-          {contact.postalCode} {contact.city}
-        </p>
-      </div>
-      <div>
-        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Reservierung</h2>
-        <p>
-          <a class={link} href={contact.phoneHref}>{contact.phone}</a><br />
-          <a class={link} href={contact.mobileHref}>{contact.mobile}</a><br />
-          <a class={link} href={`mailto:${contact.email}`}>{contact.email}</a>
-        </p>
-      </div>
-      <div>
-        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Öffnungszeiten</h2>
-        <Hours tone="dark" />
-      </div>
-    </div>
-    <div
-      class="mt-12 flex flex-wrap justify-between gap-5 border-t border-cream/15 pt-6"
-    >
-      <span>&copy; {new Date().getFullYear()} {site.name}</span>
-      <span>
-        <a class={link} href="/impressum/">Impressum</a> &nbsp;·&nbsp;
-        <a class={link} href="/datenschutz/">Datenschutz</a>
-      </span>
-    </div>
+<!-- Adresse, Telefon und Öffnungszeiten standen hier ein zweites Mal. Sie
+     stehen im Kontaktabschnitt der Startseite; übrig bleibt das Pflichtteil. -->
+<footer class="border-t border-cream/15 bg-ink-900 py-8 text-label text-cream-dim">
+  <div class="mx-auto flex w-full max-w-shell flex-wrap justify-between gap-x-5 gap-y-3 px-gutter">
+    <span>&copy; {new Date().getFullYear()} {site.name}</span>
+    <span>
+      <a class={link} href="/impressum/">Impressum</a> &nbsp;·&nbsp;
+      <a class={link} href="/datenschutz/">Datenschutz</a>
+    </span>
   </div>
 </footer>

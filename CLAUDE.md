@@ -1,7 +1,7 @@
-# Hoi An Sushi & Wok
+# Hoi An Wok & Sushi
 
 ## Information
-Restaurant name: Hoi An Sushi & Wok
+Restaurant name: Hoi An Wok & Sushi
 Owner: Viet Toan Do
 Address: Bahnhofstraße 9, 02708 Löbau
 Opening hours: Monday to Saturday, 10:00-20:00 (closed Sunday)

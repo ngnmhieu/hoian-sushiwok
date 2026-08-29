@@ -13,5 +13,8 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [react(), sitemap()],
   build: { format: 'directory' },
+  // /kontakt/ war eine eigene Seite und ist jetzt ein Abschnitt der Startseite.
+  // Der Eintrag hält die alte Adresse am Leben; sonst käme dort ein 404.
+  redirects: { '/kontakt': '/#kontakt' },
   vite: { plugins: [tailwindcss()] },
 });

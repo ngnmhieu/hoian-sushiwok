@@ -7,27 +7,25 @@ import cover from '../assets/speisekarte-titel.jpg';
 // Die gedruckte Karte liegt als PDF in public/. Kein Trailing Slash: das hier
 // ist eine Datei, keine Route — mit Slash antwortet Pages mit 404.
 const pdf = '/speisekarte.pdf';
-const pdfInfo = '17 Seiten · PDF · 3,1 MB';
 ---
 
 <Base
   title="Speisekarte"
-  description="Die ganze Karte: Sushi von der kalten Theke und Gerichte aus dem heißen Wok — Hoi An Sushi & Wok in Löbau."
+  description="Die ganze Karte: Sushi und warme Gerichte — Hoi An Wok & Sushi in Löbau."
 >
-  <section class="py-band">
+  <section class="pt-[clamp(2rem,4.5vw,4rem)] pb-band">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <h1 class="max-w-[16ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
-        Die ganze Karte
+      <h1 class="max-w-[16ch] font-display text-heading leading-none tracking-[-0.015em] text-balance">
+        Speisekarte
       </h1>
-      <p class="mt-6 max-w-[52ch] text-lead leading-[1.55] text-pretty">
-        Kalte Theke und heißer Wok stehen nebeneinander. Die vollständige Karte mit allen Preisen
-        liegt als PDF vor — so, wie sie auch auf dem Tisch liegt.
+      <p class="mt-6 max-w-[62ch] text-pretty">
+        Hier finden Sie unsere komplette Speisekarte mit allen Preisen. Alle Speisen gibt es auch
+        zum Mitnehmen.
       </p>
 
-      <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <p class="mt-10">
         <Button href={pdf} target="_blank" rel="noopener">Speisekarte als PDF öffnen</Button>
-        <span class="text-label text-night-dim">{pdfInfo}</span>
-      </div>
+      </p>
 
       <!-- Auf dem Handy zeigt weder Chrome noch Safari ein eingebettetes PDF
            zuverlässig an — mal bleibt der Rahmen leer, mal steht nur Seite 1
@@ -37,7 +35,7 @@ const pdfInfo = '17 Seiten · PDF · 3,1 MB';
         href={pdf}
         target="_blank"
         rel="noopener"
-        class="mt-6 block border border-night/15 no-underline md:hidden"
+        class="group mt-6 block border border-night/15 no-underline md:hidden"
       >
         <Image
           src={cover}
@@ -50,8 +48,19 @@ const pdfInfo = '17 Seiten · PDF · 3,1 MB';
         <span
           class="flex items-center justify-between gap-3 border-t border-night/15 bg-paper-deep/55 px-4 py-3.5 text-label font-medium tracking-[0.08em] text-night uppercase"
         >
-          Ganze Karte öffnen
-          <span aria-hidden="true">↗</span>
+          Speisekarte öffnen
+          <svg
+            class="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 12h15M13 6l6 6-6 6" />
+          </svg>
         </span>
       </a>
       <iframe

@@ -1,4 +1,4 @@
-# Hoi An Sushi & Wok
+# Hoi An Wok & Sushi
 
 Statische Website für das Restaurant. Geschrieben in **Astro mit React-Komponenten**
 und **Tailwind CSS v4**, gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von

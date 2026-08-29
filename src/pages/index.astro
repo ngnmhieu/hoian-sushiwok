@@ -7,12 +7,18 @@ import { contact, isDraft } from '../data/site';
 import hero from '../assets/hoian-1.jpg';
 
 const rise = 'opacity-0 animate-rise motion-reduce:animate-none motion-reduce:opacity-100';
+const mapsQuery = encodeURIComponent(
+  `${contact.street}, ${contact.postalCode} ${contact.city}`
+);
+const mapsEmbed = `https://www.google.com/maps?q=${mapsQuery}&z=16&hl=de&output=embed`;
+const darkLink =
+  'underline decoration-cream/30 underline-offset-4 hover:decoration-lantern-soft';
 const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5rem)] border-t-[3px]';
 ---
 
 <Base
-  title="Sushi & Wok"
-  description="Sushi von der kalten Theke, Gerichte aus dem heißen Wok — asiatisch essen mitten in Löbau. Speisekarte, Öffnungszeiten und Reservierung."
+  title="Wok & Sushi"
+  description="Sushi und warme Gerichte — asiatisch essen mitten in Löbau. Speisekarte, Öffnungszeiten und Reservierung."
 >
   <section
     class="relative overflow-hidden bg-[radial-gradient(120%_90%_at_50%_-10%,var(--color-ink-700),var(--color-ink-900)_62%)] pt-[clamp(7rem,18vh,12rem)] pb-[clamp(4rem,10vh,7rem)] text-cream"
@@ -36,13 +42,13 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
     </div>
     <div class="relative z-20 mx-auto w-full max-w-shell px-gutter text-center">
       <h1
-        class={`font-display wonk-soft text-display leading-none tracking-[-0.03em] text-balance ${rise}`}
+        class={`font-display text-display leading-none tracking-[-0.03em] text-balance ${rise}`}
         style="animation-delay:.15s"
       >
         Hoi An
         <em
-          class="mt-4 block text-[0.42em] font-normal tracking-[0.32em] text-wall uppercase not-italic wonk-none"
-          >Sushi &amp; Wok</em
+          class="mt-4 block text-[0.42em] font-normal tracking-[0.32em] text-wall uppercase not-italic"
+          >Wok &amp; Sushi</em
         >
       </h1>
       <p
@@ -61,7 +67,7 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
 
   <section class="py-band">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <h2 class="max-w-[18ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
+      <h2 class="max-w-[18ch] font-display text-heading leading-none tracking-[-0.015em] text-balance">
         Zwei Küchen, ein Haus
       </h2>
       <p class="mt-6 mb-12 max-w-[62ch] text-lead leading-[1.55] text-pretty">
@@ -72,13 +78,13 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
 
       <div class="grid gap-[clamp(1.5rem,4vw,3rem)] md:grid-cols-2">
         <div class={`${card} border-t-shutter`}>
-          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">Kalte Küche</h3>
+          <h3 class="mb-3 font-display text-title leading-none text-balance">Sushi</h3>
           <p class="max-w-[46ch]">
             Roher Fisch, geformter Reis, kalte Vorspeisen. Wird an der Theke gemacht, nicht am Herd.
           </p>
         </div>
         <div class={`${card} border-t-lantern`}>
-          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">Heiße Küche</h3>
+          <h3 class="mb-3 font-display text-title leading-none text-balance">Warme Gerichte</h3>
           <p class="max-w-[46ch]">
             Wok bei voller Hitze, Brühen über Stunden. Alles kommt heiß und in wenigen Minuten.
           </p>
@@ -94,7 +100,7 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
   <section class="bg-wall py-band">
     <div class="mx-auto grid w-full max-w-shell gap-[clamp(2rem,5vw,4.5rem)] px-gutter md:grid-cols-2">
       <div>
-        <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
+        <h2 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">
           Ein Stück Hoi An in Löbau
         </h2>
       </div>
@@ -118,23 +124,52 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
     </div>
   </section>
 
-  <section class="bg-ink-900 py-band text-cream">
-    <div class="mx-auto grid w-full max-w-shell gap-[clamp(2rem,5vw,4.5rem)] px-gutter md:grid-cols-2">
-      <div>
-        <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
-          Öffnungszeiten
-        </h2>
-        <Hours tone="dark" class="mt-8" />
-      </div>
-      <div>
-        <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">Adresse</h2>
-        <p class="mt-8 text-lead leading-[1.5] text-pretty">
-          {contact.street}<br />
-          {contact.postalCode} {contact.city}
-        </p>
-        <p class="mt-8">
-          <Button href={contact.phoneHref}>Anrufen &amp; reservieren</Button>
-        </p>
+  <!-- Der Kontakt hat keine eigene Seite mehr, er ist dieser Abschnitt. Das
+       Kopfmenü springt mit /#kontakt hierher; scroll-mt hält die Überschrift
+       unter der klebenden Kopfzeile frei. -->
+  <section id="kontakt" class="scroll-mt-17 bg-ink-900 py-[clamp(2rem,4.5vw,4rem)] text-cream">
+    <div class="mx-auto w-full max-w-shell px-gutter">
+      <h2 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">
+        Kontakt
+      </h2>
+      <div class="mt-8 grid gap-[clamp(1.5rem,4vw,3rem)] md:grid-cols-2">
+        <div>
+          <h3 class="font-display text-title leading-none text-balance">Öffnungszeiten</h3>
+          <Hours tone="dark" class="mt-4" />
+          <p class="mt-6 text-label text-cream-dim">
+            An Feiertagen können die Zeiten abweichen. Rufen Sie im Zweifel kurz an.
+          </p>
+          <h3 class="mt-10 font-display text-title leading-none text-balance">Telefon &amp; E-Mail</h3>
+          <p class="mt-4">
+            <a class={darkLink} href={contact.phoneHref}>{contact.phone}</a><br />
+            <a class={darkLink} href={contact.mobileHref}>{contact.mobile}</a>
+            <span class="text-cream-dim">(mobil)</span><br />
+            <a class={darkLink} href={`mailto:${contact.email}`}>{contact.email}</a>
+          </p>
+          <p class="mt-8 flex flex-wrap gap-3">
+            <Button href={contact.phoneHref}>Anrufen</Button>
+            {
+              contact.mapsUrl && (
+                <Button href={contact.mapsUrl} variant="ghost" rel="noopener" target="_blank">
+                  Route öffnen
+                </Button>
+              )
+            }
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-title leading-none text-balance">Adresse</h3>
+          <p class="mt-4 text-lead leading-[1.5] text-pretty">
+            {contact.street}<br />
+            {contact.postalCode} {contact.city}
+          </p>
+          <iframe
+            src={mapsEmbed}
+            title={`Karte: ${contact.street}, ${contact.postalCode} ${contact.city}`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="mt-6 h-[clamp(14rem,28vw,20rem)] w-full border border-cream/15"></iframe>
+        </div>
       </div>
     </div>
   </section>
