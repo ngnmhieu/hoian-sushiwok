@@ -1,46 +1,43 @@
 ---
-import { contact, hours, site } from '../data/site';
+import Hours from './Hours.astro';
+import { contact, site } from '../data/site';
+
+const link = 'border-b border-cream/15 no-underline transition-colors hover:border-lantern hover:text-cream';
 ---
 
-<footer class="footer">
-  <div class="shell">
-    <div class="footer__grid">
+<footer class="bg-ink-900 pt-[clamp(3rem,7vw,5rem)] pb-8 text-label text-cream-dim">
+  <div class="mx-auto w-full max-w-shell px-gutter">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <div>
-        <h2>{site.name}</h2>
+        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">{site.name}</h2>
         <p>{site.tagline}</p>
       </div>
       <div>
-        <h2>Adresse</h2>
+        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Adresse</h2>
         <p>
           {contact.street}<br />
           {contact.postalCode} {contact.city}
         </p>
       </div>
       <div>
-        <h2>Reservierung</h2>
+        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Reservierung</h2>
         <p>
-          <a href={contact.phoneHref}>{contact.phone}</a><br />
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a class={link} href={contact.phoneHref}>{contact.phone}</a><br />
+          <a class={link} href={`mailto:${contact.email}`}>{contact.email}</a>
         </p>
       </div>
       <div>
-        <h2>Öffnungszeiten</h2>
-        <dl class="facts">
-          {
-            hours.map((h) => (
-              <div>
-                <dt>{h.days}</dt>
-                <dd>{h.open}</dd>
-              </div>
-            ))
-          }
-        </dl>
+        <h2 class="mb-4 font-display wonk text-lead font-medium text-balance text-cream">Öffnungszeiten</h2>
+        <Hours tone="dark" />
       </div>
     </div>
-    <div class="footer__legal">
+    <div
+      class="mt-12 flex flex-wrap justify-between gap-5 border-t border-cream/15 pt-6"
+    >
       <span>&copy; {new Date().getFullYear()} {site.name}</span>
       <span>
-        <a href="/impressum/">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz/">Datenschutz</a>
+        <a class={link} href="/impressum/">Impressum</a> &nbsp;·&nbsp;
+        <a class={link} href="/datenschutz/">Datenschutz</a>
       </span>
     </div>
   </div>

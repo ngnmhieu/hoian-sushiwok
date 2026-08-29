@@ -40,7 +40,7 @@ const schema = {
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -56,18 +56,33 @@ const schema = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     <noscript>
       <style>
-        @media (max-width: 46rem) {
-          .nav { display: flex !important; }
-          .nav-toggle { display: none !important; }
+        /* Ohne JavaScript bleibt die Navigation aufgeklappt statt unerreichbar. */
+        @media (max-width: 48rem) {
+          [data-nav] {
+            display: flex !important;
+          }
+          [data-nav-toggle] {
+            display: none !important;
+          }
         }
       </style>
     </noscript>
   </head>
-  <body>
-    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-    <header class="masthead">
-      <div class="shell masthead__inner">
-        <a class="wordmark" href="/">Hội An <span>Sushi &amp; Wok</span></a>
+  <body class="bg-paper font-sans text-body leading-[1.65] font-light text-night antialiased">
+    <a
+      class="absolute top-0 left-2 z-100 -translate-y-24 rounded-full bg-paper px-4 py-2.5 text-night no-underline transition-transform focus:translate-y-2"
+      href="#inhalt">Zum Inhalt springen</a
+    >
+    <header
+      class="sticky top-0 z-50 border-b border-cream/15 bg-ink-900/90 text-cream backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex min-h-17 w-full max-w-shell items-center justify-between gap-4 px-gutter"
+      >
+        <a
+          class="font-display wonk text-[1.15rem] font-semibold tracking-[0.02em] whitespace-nowrap no-underline"
+          href="/">Hội An <span class="text-lantern-soft">Sushi &amp; Wok</span></a
+        >
         <Nav client:load pathname={pathname} />
       </div>
     </header>

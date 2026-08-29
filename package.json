@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "serve": "http-server docs -p 4322 -c-1"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -15,11 +16,17 @@
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource/be-vietnam-pro": "^5.3.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "astro": "^5.14.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }

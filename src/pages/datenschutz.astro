@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Prose from '../components/Prose.astro';
 import { contact } from '../data/site';
 ---
 
@@ -7,13 +9,14 @@ import { contact } from '../data/site';
   title="Datenschutzerklärung"
   description="Wie diese Website mit personenbezogenen Daten umgeht."
 >
-  <section class="band">
-    <div class="shell prose">
-      <p class="eyebrow">Datenschutz</p>
-      <h1 style="font-size:var(--step-3)">Datenschutzerklärung</h1>
+  <section class="py-band">
+    <div class="mx-auto w-full max-w-shell px-gutter">
+      <Eyebrow>Datenschutz</Eyebrow>
+      <h1 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">Datenschutzerklärung</h1>
+      <Prose>
 
-      <p class="notice" style="margin-top:2rem">
-        <strong>Entwurf.</strong> Dieser Text beschreibt den technischen Stand der Website und
+      <p class="not-prose mt-8 border-l-[3px] border-lantern bg-lantern/8 px-5 py-4 text-label">
+        <strong class="font-semibold">Entwurf.</strong> Dieser Text beschreibt den technischen Stand der Website und
         ersetzt keine Rechtsberatung. Vor der Veröffentlichung prüfen lassen und die TODO-Stellen
         ausfüllen.
       </p>
@@ -71,6 +74,7 @@ import { contact } from '../data/site';
         Sobald Sie einem Link auf eine fremde Seite folgen — etwa zu einem Kartendienst — gilt
         die Datenschutzerklärung des jeweiligen Anbieters.
       </p>
+      </Prose>
     </div>
   </section>
 </Base>

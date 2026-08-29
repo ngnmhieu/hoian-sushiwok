@@ -1,0 +1,16 @@
+---
+// Fließtext für die Rechtstexte. Das Typography-Plugin setzt die Abstände,
+// die Farben kommen aus dem Theme.
+const prose = [
+  'prose max-w-[62ch]',
+  '[--tw-prose-body:var(--color-night)]',
+  '[--tw-prose-headings:var(--color-night)]',
+  '[--tw-prose-bold:var(--color-night)]',
+  '[--tw-prose-bullets:var(--color-night-dim)]',
+  '[--tw-prose-links:var(--color-lantern)]',
+  'prose-headings:font-display prose-headings:wonk prose-headings:font-medium prose-headings:tracking-[-0.015em]',
+  'prose-h2:text-title prose-h3:text-lead',
+].join(' ');
+---
+
+<div class={prose}><slot /></div>

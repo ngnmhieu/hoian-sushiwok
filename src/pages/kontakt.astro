@@ -1,53 +1,49 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, hours } from '../data/site';
+import Button from '../components/Button.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import Hours from '../components/Hours.astro';
+import { contact } from '../data/site';
 ---
 
 <Base
   title="Kontakt"
   description="Adresse, Öffnungszeiten und Telefonnummer für Reservierungen bei Hội An Sushi & Wok."
 >
-  <section class="band">
-    <div class="shell">
-      <p class="eyebrow">Kontakt</p>
-      <h1 style="font-size:var(--step-3);max-width:16ch">Reservieren, abholen, vorbeikommen</h1>
-      <hr class="rule" />
-      <div class="split">
+  <section class="py-band">
+    <div class="mx-auto w-full max-w-shell px-gutter">
+      <Eyebrow>Kontakt</Eyebrow>
+      <h1 class="max-w-[16ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
+        Reservieren, abholen, vorbeikommen
+      </h1>
+      <hr class="my-10 border-t border-night/15" />
+      <div class="grid gap-[clamp(2rem,5vw,4.5rem)] md:grid-cols-2">
         <div>
-          <h2 style="font-size:var(--step-2)">Adresse</h2>
-          <p style="margin-top:1rem;font-size:var(--step-1);line-height:1.5">
+          <h2 class="font-display wonk text-title leading-none text-balance">Adresse</h2>
+          <p class="mt-4 text-lead leading-[1.5] text-pretty">
             {contact.street}<br />
             {contact.postalCode} {contact.city}
           </p>
-          <h2 style="font-size:var(--step-2);margin-top:2.5rem">Telefon &amp; E-Mail</h2>
-          <p style="margin-top:1rem">
-            <a href={contact.phoneHref}>{contact.phone}</a><br />
-            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <h2 class="mt-10 font-display wonk text-title leading-none text-balance">Telefon &amp; E-Mail</h2>
+          <p class="mt-4">
+            <a class="underline decoration-night/30 underline-offset-4 hover:decoration-lantern" href={contact.phoneHref}>{contact.phone}</a><br />
+            <a class="underline decoration-night/30 underline-offset-4 hover:decoration-lantern" href={`mailto:${contact.email}`}>{contact.email}</a>
           </p>
-          <p style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap">
-            <a class="btn btn--solid" href={contact.phoneHref}>Anrufen</a>
+          <p class="mt-8 flex flex-wrap gap-3">
+            <Button href={contact.phoneHref}>Anrufen</Button>
             {
               contact.mapsUrl && (
-                <a class="btn btn--ghost-dark" href={contact.mapsUrl} rel="noopener" target="_blank">
+                <Button href={contact.mapsUrl} variant="outline" rel="noopener" target="_blank">
                   Route öffnen
-                </a>
+                </Button>
               )
             }
           </p>
         </div>
         <div>
-          <h2 style="font-size:var(--step-2)">Öffnungszeiten</h2>
-          <dl class="facts" style="margin-top:1rem">
-            {
-              hours.map((h) => (
-                <div>
-                  <dt>{h.days}</dt>
-                  <dd>{h.open}</dd>
-                </div>
-              ))
-            }
-          </dl>
-          <p style="margin-top:1.5rem;font-size:var(--step--1);color:var(--text-on-light-dim)">
+          <h2 class="font-display wonk text-title leading-none text-balance">Öffnungszeiten</h2>
+          <Hours class="mt-4" />
+          <p class="mt-6 text-label text-night-dim">
             An Feiertagen können die Zeiten abweichen. Rufen Sie im Zweifel kurz an.
           </p>
         </div>

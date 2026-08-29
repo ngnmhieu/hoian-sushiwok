@@ -1,0 +1,21 @@
+---
+interface Props {
+  /** Der Punkt zeigt die Küchenhälfte an: Grünblau kalt, Rot heiß. */
+  mark?: 'lantern' | 'shutter';
+  /** Untergrund, auf dem das Etikett steht. */
+  tone?: 'light' | 'dark' | 'wall';
+  class?: string;
+}
+
+const { mark = 'lantern', tone = 'light', class: extra = '' } = Astro.props;
+
+const dot = mark === 'shutter' ? 'bg-shutter' : 'bg-lantern';
+const color =
+  tone === 'dark' ? 'text-cream-dim' : tone === 'wall' ? 'text-night/85' : 'text-night-dim';
+---
+
+<p
+  class={`mb-5 inline-flex items-center gap-2.5 text-label font-medium tracking-[0.16em] uppercase ${color} ${extra}`}
+>
+  <span class={`size-2 shrink-0 rounded-full ${dot}`} aria-hidden="true"></span><slot />
+</p>

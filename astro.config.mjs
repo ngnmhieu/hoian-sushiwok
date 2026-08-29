@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 
 // Output goes straight into /docs, which GitHub Pages serves for this repo.
 // public/CNAME and public/.nojekyll are copied on every build — do not move them
@@ -12,4 +13,5 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [react(), sitemap()],
   build: { format: 'directory' },
+  vite: { plugins: [tailwindcss()] },
 });

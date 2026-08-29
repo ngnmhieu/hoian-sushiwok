@@ -1,0 +1,23 @@
+---
+import { hours } from '../data/site';
+
+interface Props {
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { tone = 'light', class: extra = '' } = Astro.props;
+const rule = tone === 'dark' ? 'border-cream/15' : 'border-night/15';
+const label = tone === 'dark' ? 'text-cream-dim' : 'text-night-dim';
+---
+
+<dl class={`grid gap-0.5 ${extra}`}>
+  {
+    hours.map((h) => (
+      <div class={`flex justify-between gap-6 border-t py-2.5 ${rule}`}>
+        <dt class={label}>{h.days}</dt>
+        <dd class="m-0 text-right tabular-nums">{h.open}</dd>
+      </div>
+    ))
+  }
+</dl>

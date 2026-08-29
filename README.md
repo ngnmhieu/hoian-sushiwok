@@ -1,8 +1,8 @@
 # Hội An Sushi & Wok
 
-Statische Website für das Restaurant. Geschrieben in **Astro mit React-Komponenten**,
-gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von GitHub Pages unter
-[hoian-sushiwok.de](https://hoian-sushiwok.de).
+Statische Website für das Restaurant. Geschrieben in **Astro mit React-Komponenten**
+und **Tailwind CSS v4**, gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von
+GitHub Pages unter [hoian-sushiwok.de](https://hoian-sushiwok.de).
 
 ## Arbeiten
 
@@ -10,8 +10,13 @@ gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von GitHub Pages unter
 npm install
 npm run dev      # http://localhost:4321, lädt bei jeder Änderung neu
 npm run build    # schreibt die fertigen Dateien nach docs/
+npm run serve    # http://localhost:4322, liefert docs/ als reine Dateien aus
 npm run check    # TypeScript- und Astro-Prüfung
 ```
+
+`npm run dev` ist zum Arbeiten da. `npm run serve` zeigt das gebaute Ergebnis
+so, wie GitHub Pages es ausliefert — statische Dateien, keine Vite-Ebene, kein
+Hot Reload. Vorher `npm run build` laufen lassen.
 
 ## Veröffentlichen
 
@@ -49,10 +54,11 @@ Beide sind Rohfassungen und müssen vor der Veröffentlichung geprüft werden.
 src/
   data/        Inhalte (siehe oben)
   components/  Nav.tsx, MenuExplorer.tsx  — React, laufen im Browser
-               Lanterns.astro, Footer.astro — reines HTML, kein JavaScript
+               Button, Eyebrow, Hours, Prose, Lanterns, Footer — reines HTML
   layouts/     Base.astro: <head>, Kopf, Fuß, strukturierte Daten
   pages/       eine Datei = eine URL
-  styles/      global.css: Farben, Schriften, alle Komponenten
+  styles/      global.css: das Tailwind-Theme — Farben, Schriften, Typoskala,
+               Abstände, Animationen
 public/        wird unverändert nach docs/ kopiert
   CNAME        die eigene Domain — nicht nach docs/ verschieben,
                der Build leert den Ordner bei jedem Lauf
@@ -64,6 +70,18 @@ auf der Speisekarte. Alles andere ist statisches HTML — die Seite ist lesbar,
 bevor JavaScript geladen ist.
 
 ## Gestaltung
+
+Gestylt wird ausschließlich mit Tailwind-Utilities im Markup. In
+`src/styles/global.css` steht kein Layout, sondern nur das Theme: ein
+`@theme`-Block mit Farben, Schriften, der fließenden Typoskala
+(`text-label` … `text-display`), den Abständen (`py-band`, `px-gutter`) und den
+Animationen. Dazu drei eigene `@utility`-Regeln, die sich als Utility-Klassen
+nicht ausdrücken lassen: `wonk` für die Variable-Font-Achsen von Fraunces und
+`lantern-paper` für den Lichtverlauf im Laternenpapier.
+
+Wiederkehrende Muster sind Komponenten, keine CSS-Klassen: `Button.astro`,
+`Eyebrow.astro`, `Hours.astro`. Wer eine Schaltfläche ändern will, ändert sie
+dort einmal.
 
 Farben und Schriften kommen aus der Altstadt von Hội An: Ockerputz, verwitterte
 Fensterläden in Grünblau, Seidenlaternen bei Nacht. Die Karte folgt der Küche

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import MenuExplorer from '../components/MenuExplorer.tsx';
+import Eyebrow from '../components/Eyebrow.astro';
 import { isDraft } from '../data/site';
 ---
 
@@ -8,20 +9,22 @@ import { isDraft } from '../data/site';
   title="Speisekarte"
   description="Die ganze Karte: Sushi von der kalten Theke und Gerichte aus dem heißen Wok."
 >
-  <section class="band">
-    <div class="shell">
-      <p class="eyebrow">Speisekarte</p>
-      <h1 style="font-size:var(--step-3);max-width:16ch">Die ganze Karte</h1>
-      <p class="lead" style="margin-top:1.5rem;max-width:52ch">
+  <section class="py-band">
+    <div class="mx-auto w-full max-w-shell px-gutter">
+      <Eyebrow>Speisekarte</Eyebrow>
+      <h1 class="max-w-[16ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
+        Die ganze Karte
+      </h1>
+      <p class="mt-6 max-w-[52ch] text-lead leading-[1.55] text-pretty">
         Kalte Theke und heißer Wok stehen nebeneinander. Filtern Sie auf eine Hälfte, wenn Sie schon
         wissen, worauf Sie Lust haben.
       </p>
-      <hr class="rule" />
+      <hr class="my-10 border-t border-night/15" />
       {
         isDraft && (
-          <p class="notice">
-            <strong>Platzhalter-Karte.</strong> Gerichte und Preise werden noch eingetragen. Die
-            Inhalte stehen in <code>src/data/menu.ts</code>.
+          <p class="mb-10 border-l-[3px] border-lantern bg-lantern/8 px-5 py-4 text-label">
+            <strong class="font-semibold">Platzhalter-Karte.</strong> Gerichte und Preise werden noch
+            eingetragen. Die Inhalte stehen in <code>src/data/menu.ts</code>.
           </p>
         )
       }

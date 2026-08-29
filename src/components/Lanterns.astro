@@ -1,27 +1,34 @@
 ---
 // Seidenlaternen über dem Fluss — das Bild, für das Hội An bekannt ist.
-// Reines CSS, kein Bild, kein JavaScript.
+// Reines CSS, kein Bild, kein JavaScript. Höhe, Größe und Farbe kommen pro
+// Laterne als Variablen herein, den Rest machen Tailwind-Utilities.
 const lanterns = [
-  { drop: '3rem', size: '2.1rem', hue: 'var(--lantern)', delay: '0s' },
-  { drop: '6.5rem', size: '2.8rem', hue: 'var(--wall)', delay: '-2.4s' },
-  { drop: '2rem', size: '1.7rem', hue: 'var(--lantern-soft)', delay: '-4.1s' },
-  { drop: '8rem', size: '3.2rem', hue: 'var(--lantern)', delay: '-1.2s' },
-  { drop: '4rem', size: '2.2rem', hue: 'var(--wall)', delay: '-5.6s' },
-  { drop: '6rem', size: '1.9rem', hue: 'var(--lantern-soft)', delay: '-3.3s' },
-  { drop: '2.5rem', size: '2.6rem', hue: 'var(--lantern)', delay: '-6.8s' },
+  { drop: '3rem', size: '2.1rem', hue: 'var(--color-lantern)', delay: '0s' },
+  { drop: '6.5rem', size: '2.8rem', hue: 'var(--color-wall)', delay: '-2.4s' },
+  { drop: '2rem', size: '1.7rem', hue: 'var(--color-lantern-soft)', delay: '-4.1s' },
+  { drop: '8rem', size: '3.2rem', hue: 'var(--color-lantern)', delay: '-1.2s' },
+  { drop: '4rem', size: '2.2rem', hue: 'var(--color-wall)', delay: '-5.6s' },
+  { drop: '6rem', size: '1.9rem', hue: 'var(--color-lantern-soft)', delay: '-3.3s' },
+  { drop: '2.5rem', size: '2.6rem', hue: 'var(--color-lantern)', delay: '-6.8s' },
 ];
 ---
 
-<div class="lanterns" aria-hidden="true">
+<div
+  class="pointer-events-none absolute inset-0 z-10 flex items-start justify-evenly"
+  aria-hidden="true"
+>
   {
     lanterns.map((l, i) => (
       <div
-        class="lantern"
-        style={`--drop:${l.drop};--size:${l.size};--hue:${l.hue};--delay:${l.delay};animation-delay:${l.delay}, ${i * 0.12}s`}
+        class="flex origin-top flex-col items-center opacity-0 animate-lantern max-sm:nth-[n+5]:hidden motion-reduce:animate-none motion-reduce:opacity-100"
+        style={`--hue:${l.hue};animation-delay:${l.delay}, ${i * 0.12}s`}
       >
-        <span class="lantern__cord"></span>
-        <span class="lantern__body"></span>
-        <span class="lantern__tassel"></span>
+        <span
+          class="w-px bg-linear-to-b from-cream/15 to-[color-mix(in_srgb,var(--hue)_60%,transparent)]"
+          style={`height:${l.drop}`}
+        />
+        <span class="aspect-3/4 rounded-[46%/50%] lantern-paper" style={`width:${l.size}`} />
+        <span class="h-3.5 w-px bg-[color-mix(in_srgb,var(--hue)_70%,transparent)]" />
       </div>
     ))
   }
