@@ -7,7 +7,6 @@ Address: Bahnhofstraße 9, 02708 Löbau
 Opening hours: Monday to Saturday, 10:00-20:00 (closed Sunday)
 Landline: 03585 4525047
 Mobile: 0176 31510183
-Email: info@hoian-sushiwok.de
 
 ## Idea
 
@@ -25,7 +24,7 @@ Both landline and mobile numbers can be used for reservation.
 
 ## Deploy
 
-GitHub Pages serves `main` + `/docs` at hoian-sushiwok.de, so the built `docs/`
+GitHub Pages serves `main` + `/docs` at hoian-woksushi.de, so the built `docs/`
 is committed. Run `npm run build` after any source change or a stale `docs/`
 ships. The build empties `docs/`, which is why `CNAME` and `.nojekyll` live in
 `public/` — and without `.nojekyll`, Jekyll eats `_astro/` and the site arrives

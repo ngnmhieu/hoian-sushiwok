@@ -2,7 +2,7 @@
 
 Statische Website für das Restaurant. Geschrieben in **Astro mit React-Komponenten**
 und **Tailwind CSS v4**, gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von
-GitHub Pages unter [hoian-sushiwok.de](https://hoian-sushiwok.de).
+GitHub Pages unter [hoian-woksushi.de](https://hoian-woksushi.de).
 
 ## Arbeiten
 

@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // public/CNAME and public/.nojekyll are copied on every build — do not move them
 // back into docs/, the build wipes that folder.
 export default defineConfig({
-  site: 'https://hoian-sushiwok.de',
+  site: 'https://hoian-woksushi.de',
   outDir: './docs',
   trailingSlash: 'ignore',
   integrations: [react(), sitemap()],

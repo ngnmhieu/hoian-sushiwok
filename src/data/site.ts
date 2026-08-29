@@ -2,7 +2,7 @@ export const site = {
   name: 'Hoi An Wok & Sushi',
   shortName: 'Hoi An',
   tagline: 'Sushi, Wok und vietnamesische Küche mitten in Löbau',
-  url: 'https://hoian-sushiwok.de',
+  url: 'https://hoian-woksushi.de',
 };
 
 export const contact = {
@@ -15,7 +15,7 @@ export const contact = {
   phoneHref: 'tel:+4935854525047',
   mobile: '0176 31510183',
   mobileHref: 'tel:+4917631510183',
-  email: 'info@hoian-sushiwok.de',
+  email: 'info@hoian-woksushi.de',
   mapsUrl: '', // TODO: Google-Maps-Link einfügen, sonst wird der Button ausgeblendet.
 };
 
