@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import Lanterns from '../components/Lanterns.astro';
+import { contact, hours, isDraft } from '../data/site';
+import { kitchens, menu } from '../data/menu';
+
+const kalt = menu.filter((s) => s.kitchen === 'kalt');
+const heiss = menu.filter((s) => s.kitchen === 'heiss');
+---
+
+<Base
+  title="Sushi & Wok"
+  description="Sushi-Theke und Wok-Küche unter einem Dach. Hội An Sushi & Wok — Speisekarte, Öffnungszeiten und Reservierung."
+>
+  <section class="hero">
+    <Lanterns />
+    <div class="shell hero__inner">
+      <h1 class="rise" style="animation-delay:.15s">
+        Hội An
+        <em>Sushi &amp; Wok</em>
+      </h1>
+      <p class="hero__lede rise" style="animation-delay:.35s">
+        Auf der einen Seite wird Fisch geschnitten, auf der anderen brennt der Wok. Beides kommt an
+        denselben Tisch.
+      </p>
+      <div class="hero__actions rise" style="animation-delay:.5s">
+        <a class="btn btn--solid" href="/speisekarte/">Speisekarte ansehen</a>
+        <a class="btn btn--ghost" href={contact.phoneHref}>Tisch reservieren</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <p class="eyebrow">Die Karte folgt der Küche</p>
+      <h2 style="font-size:var(--step-3);max-width:18ch">Zwei Küchen, ein Haus</h2>
+      <p class="lead" style="margin-top:1.5rem;margin-bottom:3rem">
+        Sushi und Wok brauchen das Gegenteil voneinander: die eine Hälfte kühlt, die andere heizt.
+        Deshalb ist auch die Karte in zwei Hälften geteilt — Sie können in einer bleiben oder
+        wechseln.
+      </p>
+
+      <div class="kitchens">
+        <div class="kitchen-card kitchen-card--kalt">
+          <p class="eyebrow eyebrow--kalt">{kitchens.kalt.note}</p>
+          <h3>{kitchens.kalt.label}</h3>
+          <p>Roher Fisch, geformter Reis, kalte Vorspeisen. Wird an der Theke gemacht, nicht am Herd.</p>
+          <ul>
+            {kalt.map((s) => <li>{s.title}</li>)}
+          </ul>
+        </div>
+        <div class="kitchen-card kitchen-card--heiss">
+          <p class="eyebrow eyebrow--heiss">{kitchens.heiss.note}</p>
+          <h3>{kitchens.heiss.label}</h3>
+          <p>Wok bei voller Hitze, Brühen über Stunden. Alles kommt heiß und in wenigen Minuten.</p>
+          <ul>
+            {heiss.map((s) => <li>{s.title}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top:2.5rem">
+        <a class="btn btn--ghost-dark" href="/speisekarte/">Ganze Karte öffnen</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band section--wall">
+    <div class="shell split">
+      <div>
+        <p class="eyebrow">Über uns</p>
+        <h2 style="font-size:var(--step-3)">Benannt nach einer Stadt voller Laternen</h2>
+      </div>
+      <div>
+        <p class="lead">
+          Hội An liegt an der Küste Zentralvietnams. Abends hängen über der Altstadt hunderte
+          Seidenlaternen, und in den Gassen wird an offenen Küchen gekocht.
+        </p>
+        {
+          isDraft && (
+            <p>
+              <strong>TODO:</strong> Hier ein bis zwei Absätze über das Haus einsetzen — wer kocht,
+              seit wann es das Restaurant gibt, was Ihnen beim Einkauf wichtig ist.
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="band section--dark">
+    <div class="shell split">
+      <div>
+        <p class="eyebrow eyebrow--heiss">Besuch</p>
+        <h2 style="font-size:var(--step-3)">Öffnungszeiten</h2>
+        <dl class="facts" style="margin-top:2rem">
+          {
+            hours.map((h) => (
+              <div>
+                <dt>{h.days}</dt>
+                <dd>{h.open}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+      <div>
+        <p class="eyebrow eyebrow--kalt">So finden Sie uns</p>
+        <h2 style="font-size:var(--step-3)">Adresse</h2>
+        <p style="margin-top:2rem;font-size:var(--step-1);line-height:1.5">
+          {contact.street}<br />
+          {contact.postalCode} {contact.city}
+        </p>
+        <p style="margin-top:2rem">
+          <a class="btn btn--solid" href={contact.phoneHref}>Anrufen &amp; reservieren</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

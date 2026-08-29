@@ -1,0 +1,79 @@
+---
+import Nav from '../components/Nav.tsx';
+import Footer from '../components/Footer.astro';
+import { contact, hours, isDraft, site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, Astro.site ?? site.url).href;
+
+// Suchmaschinen lesen das als Tatsache. Adresse und Zeiten erst mitgeben,
+// wenn sie echt sind — TODO-Text wäre schlimmer als gar keine Angabe.
+// Beim Ausfüllen: `openingHours` braucht die Form "Mo-Fr 11:30-14:30".
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: site.name,
+  description: site.tagline,
+  url: site.url,
+  servesCuisine: ['Vietnamesisch', 'Japanisch', 'Sushi'],
+  ...(isDraft
+    ? {}
+    : {
+        telephone: contact.phone,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: contact.street,
+          postalCode: contact.postalCode,
+          addressLocality: contact.city,
+          addressCountry: 'DE',
+        },
+        openingHours: hours.map((h) => `${h.days} ${h.open}`),
+      }),
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {site.name}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} — ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="de_DE" />
+    <meta name="theme-color" content="#0a1412" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <noscript>
+      <style>
+        @media (max-width: 46rem) {
+          .nav { display: flex !important; }
+          .nav-toggle { display: none !important; }
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+    <header class="masthead">
+      <div class="shell masthead__inner">
+        <a class="wordmark" href="/">Hội An <span>Sushi &amp; Wok</span></a>
+        <Nav client:load pathname={pathname} />
+      </div>
+    </header>
+    <main id="inhalt">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Lanterns from '../components/Lanterns.astro';
+---
+
+<Base title="Seite nicht gefunden" description="Diese Seite gibt es nicht.">
+  <section class="hero" style="padding-block:clamp(6rem,16vh,10rem)">
+    <Lanterns />
+    <div class="shell hero__inner">
+      <h1 style="font-size:var(--step-3)">Hier ist nichts serviert</h1>
+      <p class="hero__lede">Die Seite gibt es nicht — oder nicht mehr.</p>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="/">Zur Startseite</a>
+        <a class="btn btn--ghost" href="/speisekarte/">Zur Speisekarte</a>
+      </div>
+    </div>
+  </section>
+</Base>

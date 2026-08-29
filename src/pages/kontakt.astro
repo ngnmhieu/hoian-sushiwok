@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, hours } from '../data/site';
+---
+
+<Base
+  title="Kontakt"
+  description="Adresse, Öffnungszeiten und Telefonnummer für Reservierungen bei Hội An Sushi & Wok."
+>
+  <section class="band">
+    <div class="shell">
+      <p class="eyebrow">Kontakt</p>
+      <h1 style="font-size:var(--step-3);max-width:16ch">Reservieren, abholen, vorbeikommen</h1>
+      <hr class="rule" />
+      <div class="split">
+        <div>
+          <h2 style="font-size:var(--step-2)">Adresse</h2>
+          <p style="margin-top:1rem;font-size:var(--step-1);line-height:1.5">
+            {contact.street}<br />
+            {contact.postalCode} {contact.city}
+          </p>
+          <h2 style="font-size:var(--step-2);margin-top:2.5rem">Telefon &amp; E-Mail</h2>
+          <p style="margin-top:1rem">
+            <a href={contact.phoneHref}>{contact.phone}</a><br />
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </p>
+          <p style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap">
+            <a class="btn btn--solid" href={contact.phoneHref}>Anrufen</a>
+            {
+              contact.mapsUrl && (
+                <a class="btn btn--ghost-dark" href={contact.mapsUrl} rel="noopener" target="_blank">
+                  Route öffnen
+                </a>
+              )
+            }
+          </p>
+        </div>
+        <div>
+          <h2 style="font-size:var(--step-2)">Öffnungszeiten</h2>
+          <dl class="facts" style="margin-top:1rem">
+            {
+              hours.map((h) => (
+                <div>
+                  <dt>{h.days}</dt>
+                  <dd>{h.open}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p style="margin-top:1.5rem;font-size:var(--step--1);color:var(--text-on-light-dim)">
+            An Feiertagen können die Zeiten abweichen. Rufen Sie im Zweifel kurz an.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

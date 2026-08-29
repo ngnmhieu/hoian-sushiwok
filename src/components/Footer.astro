@@ -1,0 +1,47 @@
+---
+import { contact, hours, site } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <h2>{site.name}</h2>
+        <p>{site.tagline}</p>
+      </div>
+      <div>
+        <h2>Adresse</h2>
+        <p>
+          {contact.street}<br />
+          {contact.postalCode} {contact.city}
+        </p>
+      </div>
+      <div>
+        <h2>Reservierung</h2>
+        <p>
+          <a href={contact.phoneHref}>{contact.phone}</a><br />
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </p>
+      </div>
+      <div>
+        <h2>Öffnungszeiten</h2>
+        <dl class="facts">
+          {
+            hours.map((h) => (
+              <div>
+                <dt>{h.days}</dt>
+                <dd>{h.open}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>&copy; {new Date().getFullYear()} {site.name}</span>
+      <span>
+        <a href="/impressum/">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz/">Datenschutz</a>
+      </span>
+    </div>
+  </div>
+</footer>

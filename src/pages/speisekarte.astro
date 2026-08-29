@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import MenuExplorer from '../components/MenuExplorer.tsx';
+import { isDraft } from '../data/site';
+---
+
+<Base
+  title="Speisekarte"
+  description="Die ganze Karte: Sushi von der kalten Theke und Gerichte aus dem heißen Wok."
+>
+  <section class="band">
+    <div class="shell">
+      <p class="eyebrow">Speisekarte</p>
+      <h1 style="font-size:var(--step-3);max-width:16ch">Die ganze Karte</h1>
+      <p class="lead" style="margin-top:1.5rem;max-width:52ch">
+        Kalte Theke und heißer Wok stehen nebeneinander. Filtern Sie auf eine Hälfte, wenn Sie schon
+        wissen, worauf Sie Lust haben.
+      </p>
+      <hr class="rule" />
+      {
+        isDraft && (
+          <p class="notice">
+            <strong>Platzhalter-Karte.</strong> Gerichte und Preise werden noch eingetragen. Die
+            Inhalte stehen in <code>src/data/menu.ts</code>.
+          </p>
+        )
+      }
+      <MenuExplorer client:load />
+    </div>
+  </section>
+</Base>

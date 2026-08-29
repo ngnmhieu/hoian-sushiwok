@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, site } from '../data/site';
+---
+
+<Base title="Impressum" description="Impressum und Anbieterkennzeichnung nach § 5 DDG.">
+  <section class="band">
+    <div class="shell prose">
+      <p class="eyebrow">Pflichtangaben</p>
+      <h1 style="font-size:var(--step-3)">Impressum</h1>
+
+      <p class="notice" style="margin-top:2rem">
+        <strong>Entwurf.</strong> Alle mit TODO markierten Angaben müssen vor der Veröffentlichung
+        durch die echten Daten ersetzt und rechtlich geprüft werden. Ein unvollständiges Impressum
+        ist abmahnfähig.
+      </p>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        TODO: Name des Betriebs bzw. der Gesellschaft<br />
+        {contact.street}<br />
+        {contact.postalCode} {contact.city}
+      </p>
+
+      <h2>Vertreten durch</h2>
+      <p>TODO: Vor- und Nachname der inhabenden oder vertretungsberechtigten Person</p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: {contact.phone}<br />
+        E-Mail: {contact.email}
+      </p>
+
+      <h2>Registereintrag</h2>
+      <p>
+        TODO: Falls vorhanden — Registergericht und Handelsregisternummer. Bei einem
+        Einzelunternehmen entfällt dieser Abschnitt.
+      </p>
+
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
+      <p>TODO: USt-IdNr. gemäß § 27 a Umsatzsteuergesetz</p>
+
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>
+        TODO: Name und Anschrift der verantwortlichen Person, falls abweichend von den obigen
+        Angaben.
+      </p>
+
+      <h2>Streitbeilegung</h2>
+      <p>
+        Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen
+        Einfluss haben. Für diese fremden Inhalte kann keine Gewähr übernommen werden.
+        Verantwortlich ist stets der jeweilige Anbieter der verlinkten Seiten.
+      </p>
+
+      <p style="margin-top:2.5rem;color:var(--text-on-light-dim);font-size:var(--step--1)">
+        {site.name}
+      </p>
+    </div>
+  </section>
+</Base>
