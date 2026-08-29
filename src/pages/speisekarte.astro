@@ -1,34 +1,63 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import MenuExplorer from '../components/MenuExplorer.tsx';
-import Eyebrow from '../components/Eyebrow.astro';
-import { isDraft } from '../data/site';
+import Button from '../components/Button.astro';
+import cover from '../assets/speisekarte-titel.jpg';
+
+// Die gedruckte Karte liegt als PDF in public/. Kein Trailing Slash: das hier
+// ist eine Datei, keine Route — mit Slash antwortet Pages mit 404.
+const pdf = '/speisekarte.pdf';
+const pdfInfo = '17 Seiten · PDF · 3,1 MB';
 ---
 
 <Base
   title="Speisekarte"
-  description="Die ganze Karte: Sushi von der kalten Theke und Gerichte aus dem heißen Wok."
+  description="Die ganze Karte: Sushi von der kalten Theke und Gerichte aus dem heißen Wok — Hoi An Sushi & Wok in Löbau."
 >
   <section class="py-band">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <Eyebrow>Speisekarte</Eyebrow>
       <h1 class="max-w-[16ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
         Die ganze Karte
       </h1>
       <p class="mt-6 max-w-[52ch] text-lead leading-[1.55] text-pretty">
-        Kalte Theke und heißer Wok stehen nebeneinander. Filtern Sie auf eine Hälfte, wenn Sie schon
-        wissen, worauf Sie Lust haben.
+        Kalte Theke und heißer Wok stehen nebeneinander. Die vollständige Karte mit allen Preisen
+        liegt als PDF vor — so, wie sie auch auf dem Tisch liegt.
       </p>
-      <hr class="my-10 border-t border-night/15" />
-      {
-        isDraft && (
-          <p class="mb-10 border-l-[3px] border-lantern bg-lantern/8 px-5 py-4 text-label">
-            <strong class="font-semibold">Platzhalter-Karte.</strong> Gerichte und Preise werden noch
-            eingetragen. Die Inhalte stehen in <code>src/data/menu.ts</code>.
-          </p>
-        )
-      }
-      <MenuExplorer client:load />
+
+      <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <Button href={pdf} target="_blank" rel="noopener">Speisekarte als PDF öffnen</Button>
+        <span class="text-label text-night-dim">{pdfInfo}</span>
+      </div>
+
+      <!-- Auf dem Handy zeigt weder Chrome noch Safari ein eingebettetes PDF
+           zuverlässig an — mal bleibt der Rahmen leer, mal steht nur Seite 1
+           ohne Scrollen darin. Dort führt deshalb die Titelseite in den
+           nativen Viewer, der auch zoomen kann. Ab md steht der Rahmen. -->
+      <a
+        href={pdf}
+        target="_blank"
+        rel="noopener"
+        class="mt-6 block border border-night/15 no-underline md:hidden"
+      >
+        <Image
+          src={cover}
+          alt="Titelseite der Speisekarte"
+          widths={[480, 760, 1240]}
+          sizes="100vw"
+          loading="eager"
+          class="w-full"
+        />
+        <span
+          class="flex items-center justify-between gap-3 border-t border-night/15 bg-paper-deep/55 px-4 py-3.5 text-label font-medium tracking-[0.08em] text-night uppercase"
+        >
+          Ganze Karte öffnen
+          <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <iframe
+        src={pdf}
+        title="Speisekarte als PDF"
+        class="mt-6 hidden h-[min(85vh,60rem)] w-full border border-night/15 md:block"></iframe>
     </div>
   </section>
 </Base>

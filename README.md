@@ -1,4 +1,4 @@
-# Hội An Sushi & Wok
+# Hoi An Sushi & Wok
 
 Statische Website für das Restaurant. Geschrieben in **Astro mit React-Komponenten**
 und **Tailwind CSS v4**, gebaut zu reinem HTML/CSS in `docs/`, ausgeliefert von
@@ -31,10 +31,14 @@ Der Text steht nicht im Layout, sondern an zwei Stellen:
 | Datei | Inhalt |
 | --- | --- |
 | `src/data/site.ts` | Adresse, Telefon, E-Mail, Öffnungszeiten |
-| `src/data/menu.ts` | Speisekarte: Kategorien, Gerichte, Preise |
+| `public/speisekarte.pdf` | Die Speisekarte selbst — die verbindliche Fassung |
 
-Beide enthalten aktuell Platzhalter, markiert mit `TODO`. Preise stehen auf
-`null` und erscheinen als „–,– €". Wenn alles eingetragen ist, in
+Gerichte und Preise stehen nur im PDF, nicht als Text auf der Seite. Die
+Speisekarten-Seite bindet es ein (ab `md` als Rahmen, darunter als antippbare
+Titelseite) und verlinkt es. Wird das PDF getauscht, wird auch
+`src/assets/speisekarte-titel.jpg` stale — das ist Seite 1 als Bild.
+
+`src/data/site.ts` enthält aktuell Platzhalter, markiert mit `TODO`. Wenn alles eingetragen ist, in
 `src/data/site.ts` `isDraft = false` setzen. Damit verschwinden die
 Entwurfshinweise auf Startseite und Speisekarte — und erst dann gibt die Seite
 Adresse und Öffnungszeiten als strukturierte Daten an Suchmaschinen weiter.
@@ -53,8 +57,8 @@ Beide sind Rohfassungen und müssen vor der Veröffentlichung geprüft werden.
 ```
 src/
   data/        Inhalte (siehe oben)
-  components/  Nav.tsx, MenuExplorer.tsx  — React, laufen im Browser
-               Button, Eyebrow, Hours, Prose, Lanterns, Footer — reines HTML
+  components/  Nav.tsx — React, läuft im Browser
+               Button, Hours, Prose, Lanterns, Footer — reines HTML
   layouts/     Base.astro: <head>, Kopf, Fuß, strukturierte Daten
   pages/       eine Datei = eine URL
   styles/      global.css: das Tailwind-Theme — Farben, Schriften, Typoskala,
@@ -80,10 +84,10 @@ nicht ausdrücken lassen: `wonk` für die Variable-Font-Achsen von Fraunces und
 `lantern-paper` für den Lichtverlauf im Laternenpapier.
 
 Wiederkehrende Muster sind Komponenten, keine CSS-Klassen: `Button.astro`,
-`Eyebrow.astro`, `Hours.astro`. Wer eine Schaltfläche ändern will, ändert sie
+`Hours.astro`, `Prose.astro`. Wer eine Schaltfläche ändern will, ändert sie
 dort einmal.
 
-Farben und Schriften kommen aus der Altstadt von Hội An: Ockerputz, verwitterte
+Farben und Schriften kommen aus der Altstadt von Hoi An: Ockerputz, verwitterte
 Fensterläden in Grünblau, Seidenlaternen bei Nacht. Die Karte folgt der Küche
 und ist in eine kalte (Sushi-Theke) und eine heiße Hälfte (Wok) geteilt; diese
 Zweiteilung ist das Ordnungsprinzip der ganzen Seite.

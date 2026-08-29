@@ -1,7 +1,7 @@
 export const site = {
-  name: 'Hội An Sushi & Wok',
-  shortName: 'Hội An',
-  tagline: 'Sushi-Theke und Wok-Küche unter einem Dach',
+  name: 'Hoi An Sushi & Wok',
+  shortName: 'Hoi An',
+  tagline: 'Sushi, Wok und vietnamesische Küche mitten in Löbau',
   url: 'https://hoian-sushiwok.de',
 };
 

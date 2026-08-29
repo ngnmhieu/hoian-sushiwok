@@ -2,14 +2,9 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
-import Eyebrow from '../components/Eyebrow.astro';
 import Hours from '../components/Hours.astro';
 import { contact, isDraft } from '../data/site';
-import { kitchens, menu } from '../data/menu';
 import hero from '../assets/hoian-1.jpg';
-
-const kalt = menu.filter((s) => s.kitchen === 'kalt');
-const heiss = menu.filter((s) => s.kitchen === 'heiss');
 
 const rise = 'opacity-0 animate-rise motion-reduce:animate-none motion-reduce:opacity-100';
 const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5rem)] border-t-[3px]';
@@ -17,7 +12,7 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
 
 <Base
   title="Sushi & Wok"
-  description="Sushi-Theke und Wok-Küche unter einem Dach. Hội An Sushi & Wok — Speisekarte, Öffnungszeiten und Reservierung."
+  description="Sushi von der kalten Theke, Gerichte aus dem heißen Wok — asiatisch essen mitten in Löbau. Speisekarte, Öffnungszeiten und Reservierung."
 >
   <section
     class="relative overflow-hidden bg-[radial-gradient(120%_90%_at_50%_-10%,var(--color-ink-700),var(--color-ink-900)_62%)] pt-[clamp(7rem,18vh,12rem)] pb-[clamp(4rem,10vh,7rem)] text-cream"
@@ -44,7 +39,7 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
         class={`font-display wonk-soft text-display leading-none tracking-[-0.03em] text-balance ${rise}`}
         style="animation-delay:.15s"
       >
-        Hội An
+        Hoi An
         <em
           class="mt-4 block text-[0.42em] font-normal tracking-[0.32em] text-wall uppercase not-italic wonk-none"
           >Sushi &amp; Wok</em
@@ -66,48 +61,27 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
 
   <section class="py-band">
     <div class="mx-auto w-full max-w-shell px-gutter">
-      <Eyebrow>Die Karte folgt der Küche</Eyebrow>
       <h2 class="max-w-[18ch] font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
         Zwei Küchen, ein Haus
       </h2>
       <p class="mt-6 mb-12 max-w-[62ch] text-lead leading-[1.55] text-pretty">
         Sushi und Wok brauchen das Gegenteil voneinander: die eine Hälfte kühlt, die andere heizt.
-        Deshalb ist auch die Karte in zwei Hälften geteilt — Sie können in einer bleiben oder
-        wechseln.
+        Deshalb ist auch die Karte in zwei Hälften geteilt. Sie können in einer bleiben oder
+        mischen.
       </p>
 
       <div class="grid gap-[clamp(1.5rem,4vw,3rem)] md:grid-cols-2">
         <div class={`${card} border-t-shutter`}>
-          <Eyebrow mark="shutter">{kitchens.kalt.note}</Eyebrow>
-          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">{kitchens.kalt.label}</h3>
+          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">Kalte Küche</h3>
           <p class="max-w-[46ch]">
             Roher Fisch, geformter Reis, kalte Vorspeisen. Wird an der Theke gemacht, nicht am Herd.
           </p>
-          <ul class="mt-5">
-            {
-              kalt.map((s) => (
-                <li class="border-t border-night/15 py-2 text-label tracking-[0.04em] text-night-dim">
-                  {s.title}
-                </li>
-              ))
-            }
-          </ul>
         </div>
         <div class={`${card} border-t-lantern`}>
-          <Eyebrow mark="lantern">{kitchens.heiss.note}</Eyebrow>
-          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">{kitchens.heiss.label}</h3>
+          <h3 class="mb-3 font-display wonk text-title leading-none text-balance">Heiße Küche</h3>
           <p class="max-w-[46ch]">
             Wok bei voller Hitze, Brühen über Stunden. Alles kommt heiß und in wenigen Minuten.
           </p>
-          <ul class="mt-5">
-            {
-              heiss.map((s) => (
-                <li class="border-t border-night/15 py-2 text-label tracking-[0.04em] text-night-dim">
-                  {s.title}
-                </li>
-              ))
-            }
-          </ul>
         </div>
       </div>
 
@@ -120,15 +94,16 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
   <section class="bg-wall py-band">
     <div class="mx-auto grid w-full max-w-shell gap-[clamp(2rem,5vw,4.5rem)] px-gutter md:grid-cols-2">
       <div>
-        <Eyebrow tone="wall">Über uns</Eyebrow>
         <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
-          Benannt nach einer Stadt voller Laternen
+          Ein Stück Hoi An in Löbau
         </h2>
       </div>
       <div>
         <p class="max-w-[62ch] text-lead leading-[1.55] text-pretty">
-          Hội An liegt an der Küste Zentralvietnams. Abends hängen über der Altstadt hunderte
-          Seidenlaternen, und in den Gassen wird an offenen Küchen gekocht.
+          Hoi An ist eine Hafenstadt in Zentralvietnam: Laternen über der Altstadt, offene
+          Küchen in den Gassen. Die Stadt lässt sich nicht mitbringen, ihre Küche schon — dieselben
+          Gewürze, derselbe Reis, dieselben langen Abende, an denen das Essen in die Mitte des
+          Tisches kommt und alle zugreifen. Genau das steht hier an der Bahnhofstraße.
         </p>
         {
           isDraft && (
@@ -146,14 +121,12 @@ const card = 'border border-night/15 bg-paper-deep/55 p-[clamp(1.75rem,3vw,2.5re
   <section class="bg-ink-900 py-band text-cream">
     <div class="mx-auto grid w-full max-w-shell gap-[clamp(2rem,5vw,4.5rem)] px-gutter md:grid-cols-2">
       <div>
-        <Eyebrow tone="dark" mark="lantern">Besuch</Eyebrow>
         <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">
           Öffnungszeiten
         </h2>
         <Hours tone="dark" class="mt-8" />
       </div>
       <div>
-        <Eyebrow tone="dark" mark="shutter">So finden Sie uns</Eyebrow>
         <h2 class="font-display wonk text-heading leading-none tracking-[-0.015em] text-balance">Adresse</h2>
         <p class="mt-8 text-lead leading-[1.5] text-pretty">
           {contact.street}<br />
