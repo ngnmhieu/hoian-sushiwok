@@ -10,6 +10,13 @@ const prose = [
   '[--tw-prose-links:var(--color-lantern)]',
   'prose-headings:font-display prose-headings:font-medium prose-headings:tracking-[-0.015em]',
   'prose-h2:text-title prose-h3:text-lead',
+  // Die Abstände des Plugins sind in em und wachsen deshalb mit der
+  // Überschriftgröße mit: über einer h2 lagen 2em ≈ 4rem, darunter 1em ≈ 2rem.
+  // Feste Werte halten die Überschrift bei ihrem Text und die Abschnitte
+  // erkennbar getrennt.
+  'mt-8',
+  'prose-h2:mt-10 prose-h2:mb-0 prose-h3:mt-8 prose-h3:mb-0',
+  '[&_h2+p]:mt-3 [&_h3+p]:mt-3 [&_h2+ul]:mt-3 [&_h3+ul]:mt-3',
 ].join(' ');
 ---
 

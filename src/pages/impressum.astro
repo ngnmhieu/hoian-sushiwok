@@ -5,16 +5,10 @@ import { contact, site } from '../data/site';
 ---
 
 <Base title="Impressum" description="Impressum und Anbieterkennzeichnung nach § 5 DDG.">
-  <section class="py-band">
+  <section class="py-[clamp(2rem,4.5vw,4rem)]">
     <div class="mx-auto w-full max-w-shell px-gutter">
       <h1 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">Impressum</h1>
       <Prose>
-
-      <p class="not-prose mt-8 border-l-[3px] border-lantern bg-lantern/8 px-5 py-4 text-label">
-        <strong class="font-semibold">Entwurf.</strong> Alle mit TODO markierten Angaben müssen vor der Veröffentlichung
-        durch die echten Daten ersetzt und rechtlich geprüft werden. Ein unvollständiges Impressum
-        ist abmahnfähig.
-      </p>
 
       <h2>Angaben gemäß § 5 DDG</h2>
       <p>
@@ -42,12 +36,6 @@ import { contact, site } from '../data/site';
       <h2>Umsatzsteuer-Identifikationsnummer</h2>
       <p>TODO: USt-IdNr. gemäß § 27 a Umsatzsteuergesetz</p>
 
-      <h2>Verantwortlich für den Inhalt</h2>
-      <p>
-        TODO: Name und Anschrift der verantwortlichen Person, falls abweichend von den obigen
-        Angaben.
-      </p>
-
       <h2>Streitbeilegung</h2>
       <p>
         Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
@@ -61,7 +49,7 @@ import { contact, site } from '../data/site';
         Verantwortlich ist stets der jeweilige Anbieter der verlinkten Seiten.
       </p>
 
-      <p class="mt-10 text-label text-night-dim">
+      <p class="mt-8 text-label text-night-dim">
         {site.name}
       </p>
       </Prose>

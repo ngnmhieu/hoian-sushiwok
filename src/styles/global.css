@@ -18,11 +18,11 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Nacht am Fluss */
-  --color-ink-900: #0a1412;
-  --color-ink-800: #101d19;
-  --color-ink-700: #182c26;
-  --color-ink-600: #24413a;
+  /* Nacht: dunkles Holz und Lack, fast schwarz */
+  --color-ink-900: #120e0b;
+  --color-ink-800: #1c1611;
+  --color-ink-700: #2a211a;
+  --color-ink-600: #3d3025;
 
   /* Tag: Reispapier und Ockerputz */
   --color-paper: #fbf4e2;
@@ -39,8 +39,8 @@
   --color-shutter: #3e8c7c;
 
   /* Schrift auf hellem bzw. dunklem Grund */
-  --color-night: #1b2723;
-  --color-night-dim: #5f6b63;
+  --color-night: #241c15;
+  --color-night-dim: #6a5c4d;
   --color-cream: #f3ece0;
   --color-cream-dim: #b6b0a3;
 
