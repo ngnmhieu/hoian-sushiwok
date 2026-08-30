@@ -227,10 +227,7 @@ const darkLink =
         </div>
         <div>
           <h3 class="font-display text-title leading-none text-balance">Adresse</h3>
-          <p class="mt-4 text-lead leading-[1.5] text-pretty">
-            {contact.street}<br />
-            {contact.postalCode} {contact.city}
-          </p>
+          <p class="mt-4 text-lead leading-[1.5] text-pretty">{contact.street}<br />{contact.postalCode} {contact.city}</p>
           <iframe
             src={mapsEmbed}
             title={`Karte: ${contact.street}, ${contact.postalCode} ${contact.city}`}
