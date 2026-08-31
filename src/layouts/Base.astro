@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import Nav from '../components/Nav.tsx';
 import Footer from '../components/Footer.astro';
 import { contact, hours, isDraft, site } from '../data/site';
-import logo from '../assets/hoianlogo-transparent.png';
 import '../styles/global.css';
 
 interface Props {
@@ -119,9 +117,10 @@ const schema = {
       <div
         class="mx-auto flex min-h-17 w-full max-w-shell items-center justify-between gap-4 px-gutter"
       >
-        <a class="shrink-0" href="/">
-          <Image src={logo} alt={site.name} width={44} height={44} class="h-11 w-11" />
-        </a>
+        <a
+          class="font-display text-[1.35rem] font-semibold tracking-[0.02em] whitespace-nowrap no-underline"
+          href="/"><span class="text-lacquer">HOIAN</span> <span class="text-white">WOK &amp; SUSHI</span></a
+        >
         <Nav client:load pathname={pathname} />
       </div>
     </header>
