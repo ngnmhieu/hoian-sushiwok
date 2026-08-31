@@ -25,7 +25,7 @@ export type Hours = { days: string; open: string; schema?: string; note?: string
 
 export const hours: Hours[] = [
   { days: 'Montag – Samstag', open: '10:00 – 20:00', schema: 'Mo-Sa 10:00-20:00' },
-  { days: 'Sonntag', open: 'Ruhetag' },
+  { days: 'Feiertag & Sonntag', open: 'geschlossen' },
 ];
 
 // Wird auf der Speisekarte und im Footer als Hinweis angezeigt,
