@@ -13,17 +13,11 @@ import { contact, site } from '../data/site';
       <h1 class="font-display text-heading leading-none tracking-[-0.015em] text-balance">Datenschutzerklärung</h1>
       <Prose>
 
-      <p class="not-prose mt-8 border-l-[3px] border-lantern bg-lantern/8 px-5 py-4 text-label">
-        <strong class="font-semibold">Entwurf.</strong> Dieser Text beschreibt den technischen Stand der Website und
-        ersetzt keine Rechtsberatung. Vor der Veröffentlichung prüfen lassen und die TODO-Stellen
-        ausfüllen.
-      </p>
-
       <h2>Verantwortliche Stelle</h2>
       <p>
         {site.name}, Inhaber: {contact.owner}<br />
         {contact.street}, {contact.postalCode} {contact.city}<br />
-        Telefon: {contact.phone} · E-Mail: {contact.email}
+        Telefon: {contact.phone} · E-Mail: doviettoan1@gmail.com
       </p>
 
       <h2>Was diese Website tut — und was nicht</h2>
@@ -62,15 +56,26 @@ import { contact, site } from '../data/site';
         <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
         <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO).</li>
       </ul>
+      <p>Außerdem können Sie sich bei der zuständigen Aufsichtsbehörde beschweren:</p>
       <p>
-        Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren.
-        TODO: zuständige Landesbehörde eintragen.
+        Sächsische Datenschutz- und Transparenzbeauftragte<br />
+        Devrientstraße 5, 01067 Dresden<br />
+        Postanschrift: Postfach 11 01 32, 01330 Dresden<br />
+        Telefon: +49 351 85471-101 · E-Mail: post@sdtb.sachsen.de
       </p>
 
       <h2>Externe Links</h2>
       <p>
         Sobald Sie einem Link auf eine fremde Seite folgen — etwa zu einem Kartendienst — gilt
         die Datenschutzerklärung des jeweiligen Anbieters.
+      </p>
+
+      <h2>Google Services (Analytics, Maps, Fonts etc.)</h2>
+      <p>
+        Falls Google-Dienste (z. B. Google Maps oder Google Fonts) eingebunden sind, erhebt
+        Google unter Umständen personenbezogene Daten. Wir haben keinen Einfluss auf diese
+        Datenübertragung. Weitere Informationen finden Sie in den Datenschutzhinweisen von
+        Google: https://policies.google.com/privacy
       </p>
       </Prose>
     </div>
