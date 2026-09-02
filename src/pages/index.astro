@@ -40,7 +40,7 @@ const darkLink =
 <Base
   overHero
   standaloneTitle
-  title="HOIAN - WOK & SUSHI Löbau"
+  title="HOIAN – Wok & Sushi Restaurant in Löbau"
   description="Sushi und warme Gerichte — asiatisch essen mitten in Löbau"
 >
   <section
@@ -83,6 +83,9 @@ const darkLink =
         <Button href="/speisekarte/">Speisekarte ansehen</Button>
         <Button href="#kontakt" variant="ghost">Tisch reservieren</Button>
       </div>
+      <p class={`mt-5 text-body text-cream-dim ${rise}`} style="animation-delay:.6s">
+        Reservierung nur telefonisch: <a class={darkLink} href={contact.phoneHref}>{contact.phone}</a> oder <a class={darkLink} href={contact.mobileHref}>{contact.mobile}</a>
+      </p>
     </div>
   </section>
 
@@ -101,6 +104,11 @@ const darkLink =
         Tisches kommt und alle zugreifen. Genau das steht hier an der Bahnhofstraße: ein
         asiatisches Restaurant in Löbau mit Wok-Küche und Sushi, gedacht für einen normalen
         Abend in der Stadt, nicht für eine Reise.
+      </p>
+      <p class="mt-6 text-lead leading-[1.55] text-pretty">
+        Mit dem Auto ist das Restaurant gut zu erreichen: In der Nähe der Bahnhofstraße 9 gibt es
+        öffentliche Parkplätze. Der Gastraum passt für den Tisch zu zweit genauso wie für größere
+        Anlässe — eine Familienfeier oder ein kleines Firmenessen finden hier ebenso ihren Platz.
       </p>
 
       <div class="mt-[clamp(2rem,5vw,3.5rem)] grid gap-[clamp(0.75rem,2vw,1.5rem)] sm:grid-cols-2">
