@@ -26,7 +26,7 @@ export type Hours = { days: string; open: string; schema?: string; note?: string
 export const hours: Hours[] = [
   { days: 'Montag – Samstag', open: '10:00 – 20:00', schema: 'Mo-Sa 10:00-20:00' },
   { days: 'Feiertag & Sonntag', open: 'geschlossen' },
-  { days: '03.Oktober 2026 (Tag der Deutschen Einheit)', open: '10:00 – 20:00' },
+  { days: '03.Oktober 2026 (Tag der Deutschen Einheit)', open: '10:00 – 19:00' },
 ];
 
 // Wird auf der Speisekarte und im Footer als Hinweis angezeigt,
