@@ -13,8 +13,8 @@ export const contact = {
   phone: '03585 4525047',
   // Für tel:-Links: ohne Leerzeichen, mit Ländervorwahl statt führender Null.
   phoneHref: 'tel:+4935854525047',
-  mobile: '0176 31510183',
-  mobileHref: 'tel:+4917631510183',
+  mobile: '01523 5838933',
+  mobileHref: 'tel:+4915235838933',
   email: 'info@hoian-woksushi.de',
   mapsUrl: '', // TODO: Google-Maps-Link einfügen, sonst wird der Button ausgeblendet.
 };

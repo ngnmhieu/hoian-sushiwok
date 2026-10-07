@@ -6,7 +6,7 @@ Owner: Viet Toan Do
 Address: Bahnhofstraße 9, 02708 Löbau
 Opening hours: Monday to Saturday, 10:00-20:00 (closed Sunday)
 Landline: 03585 4525047
-Mobile: 0176 31510183
+Mobile: 01523 5838933
 
 ## Idea
 
